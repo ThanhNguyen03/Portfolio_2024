@@ -17,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/black-hole.png" />
+      </head>
       <body className={`${inter.className} dark overflow-y-scroll overflow-x-hidden`}>
         <StarCanvas/>
         {children}
