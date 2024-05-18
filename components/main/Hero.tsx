@@ -28,13 +28,13 @@ const Hero = () => {
   return (
     <section id='about-me' className='relative flex flex-col h-[100vh] w-full'>
       {!video1Ended && (
-        <video ref={video1Ref} autoPlay muted className='absolute top-0 left-0 z-[1] w-full h-full object-fill'>
+        <video ref={video1Ref} autoPlay muted playsInline className='absolute top-0 left-0 z-[1] w-full h-full object-cover'>
           <source src='/vid_whole.mp4' type='video/mp4'/>
         </video>
       )}
       {video1Ended && (
         <>
-          <video ref={video2Ref} autoPlay muted loop className='absolute top-0 left-0 z-[1] w-full h-full object-fill slideToTop'>
+          <video ref={video2Ref} autoPlay muted playsInline loop className='absolute top-0 left-0 z-[1] w-full h-full object-cover slideToTop'>
             <source src='/vid_bhole.mp4' type='video/mp4' />
           </video>
           <HeroContent/>
