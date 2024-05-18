@@ -28,7 +28,6 @@ const StarCanvas = () => (
     <Canvas camera={{position: [0, 0, 1]}}>
       <Suspense fallback={null}>
         <StarBackground/>
-        <Preload all />
       </Suspense>
     </Canvas>
   </div>

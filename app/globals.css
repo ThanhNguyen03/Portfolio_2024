@@ -141,13 +141,13 @@ li.group.active div{
 }
 
 ul li:nth-child(1).active ~ .indicator {
-  transform: translateX(calc((110px * 0) - 10px));
+  transform: translateX(calc((104px * 0) - 13px));
 }
 ul li:nth-child(2).active ~ .indicator {
-  transform: translateX(calc((110px * 1) - 10px));
+  transform: translateX(calc((104px * 1) - 13px));
 }
 ul li:nth-child(3).active ~ .indicator {
-  transform: translateX(calc((110px * 2) - 10px));
+  transform: translateX(calc((104px * 2) - 13px));
 }
 
 /*=================KEY FRAME ANIMATION===============*/

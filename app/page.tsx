@@ -18,7 +18,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="h-full w-full">
+    <main className="h-full w-full overflow-x-hidden">
       <div className={`flex flex-col gap-20 ${delay ? '' : 'overflow-y-hidden h-[100vh]'}`}>
         <Hero/>
         {delay ? (

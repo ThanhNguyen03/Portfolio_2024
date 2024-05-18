@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const HeroContent = () => {
   return (
-    <motion.div className='flex items-center justify-center px-20 mt-40 w-full z-20'
+    <motion.div className='flex items-center justify-center px-5 md:px-20 mt-40 w-full z-20'
         initial='hidden' animate='visible'>
         <div className='h-full w-full flex flex-col gap-5 justify-center m-auto md:text-start text-center'>
             <motion.div className='Welcome-box py-4 px-4 border border-[#2653e78b] opacity-[0.9] custom-max:mx-auto'

@@ -40,29 +40,29 @@ const Navbar = () => {
                     </span>
                 </Link>
                 <div className='h-full flex items-center justify-between custom-min1100:mr-20'>
-                    <div className='flex items-center justify-between w-full h-auto border border-[#7042f861] bg-nav mr-4 px-10 py-2 rounded-full text-gray-200'>
+                    <div className='flex items-center justify-between w-full h-[70%] border border-[#7042f861] bg-nav mr-4 px-10 py-2 rounded-full text-gray-200'>
                         <ul className='flex items-center gap-20'>
                             <li className={`group ${activeSection === 'about-me' ? 'active' : ''}`}>
                                 <Link href={'#about-me'} className='flex flex-col items-center'>
-                                    <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer'>About Me</span>
-                                    <div className='relative overflow-hidden rounded-full z-10'>
-                                        <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/>
+                                    <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer text-sm'>About Me</span>
+                                    <div style={{backgroundImage: `url('/wavata.PNG')`}} className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'>
+                                        {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                                     </div> 
                                 </Link>
                             </li>
                             <li className={`group ${activeSection === 'skills' ? 'active' : ''}`}>
                                 <Link href={'#skills'} className='flex flex-col items-center'>
                                     <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer'>Skills</span>
-                                    <div className='relative overflow-hidden rounded-full z-10'>
-                                        <Image src={'/competence.png'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/>
+                                    <div style={{backgroundImage: `url('/competence.png')`}} className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'>
+                                        {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                                     </div> 
                                 </Link>
                             </li>
                             <li className={`flex flex-col items-center group ${activeSection === 'projects' ? 'active' : ''}`}>      
                                 <Link href={'#projects'} className='flex flex-col items-center'>
                                     <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer'>Projects</span>
-                                    <div className='relative overflow-hidden rounded-full z-10'>
-                                        <Image src={'/project.png'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/>
+                                    <div style={{backgroundImage: `url('/project.png')`}} className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'>
+                                        {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                                     </div> 
                                 </Link>
                             </li>
