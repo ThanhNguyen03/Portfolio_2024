@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='w-full flex flex-col items-center justify-center m-auto'>
         <div className='w-full h-full md:flex items-center justify-around flex-wrap'>
           <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center justify-start'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to bg-purple-500'>
+            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
               Community
             </div>
             <Link
@@ -25,7 +25,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to bg-purple-500'>
+            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
               Social Media
             </div>
             <Link
@@ -66,7 +66,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center justify-start'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to bg-purple-500'>
+            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
               About
             </div>
             <p className='flex items-center my-4'>
@@ -82,7 +82,7 @@ const Footer = () => {
 
         <div className='my-5 text-md text-center'>
           &copy;&nbsp;
-          <span className='text-transparent bg-clip-text bg-gradient-to-r from-red-500 to bg-purple-500'>
+          <span className='text-transparent bg-clip-text bg-linear-to-r from-red-500 to bg-purple-500'>
             ThanhNguyen03
           </span>
           &nbsp;Developer 2024 Inc. All rights reserved

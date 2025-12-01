@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import StarCanvas from '@/components/main/StarBackground'
-import Hero from '@/components/main/Hero'
 import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +23,10 @@ export default function RootLayout({
         <link rel='icon' href='/black-hole.png' />
       </head>
       <body
-        className={`${inter.className} dark overflow-y-scroll overflow-x-hidden`}
+        className={`${inter.className} dark overflow-x-hidden overflow-y-scroll`}
       >
         <StarCanvas />
-        <Hero />
+        <Header />
         {children}
         <Footer />
       </body>

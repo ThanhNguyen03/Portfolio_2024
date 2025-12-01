@@ -1,13 +1,13 @@
 'use client'
 
 import { SOCIAL_NAVIGATION } from '@/constants'
+import { slideInFromTop } from '@/utils/motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { slideInFromTop } from '@/utils/motion'
+import { useEffect, useState } from 'react'
 
-const Navbar = () => {
+const Header = () => {
   const [activeSection, setActiveSection] = useState<string | null>('about-me')
 
   const handleScroll = () => {
@@ -34,28 +34,28 @@ const Navbar = () => {
   return (
     <motion.div initial='hidden' animate='visible'>
       <motion.div variants={slideInFromTop}>
-        <div className='w-full h-[60px] fixed top-0 shadow-lg shadow-blue-700/50 bg-back-700/10 backdrop-blur-md z-50 px-10'>
-          <div className='w-full h-full flex items-center md:justify-between justify-center m-auto px-3 '>
+        <div className='bg-back-700/10 fixed top-0 z-50 mx-auto h-[60px] w-full max-w-[1200px] px-10 shadow-lg shadow-blue-700/50 backdrop-blur-md'>
+          <div className='m-auto flex size-full items-center justify-center px-3 md:justify-between'>
             <Link
-              className='md:flex items-center h-auto w-auto hidden'
+              className='hidden h-auto w-auto items-center md:flex'
               href={'#about-me'}
             >
-              <div className='relative overflow-hidden w-full h-full rounded-full hover:animate-bounce'>
+              <div className='relative size-full overflow-hidden rounded-full hover:animate-bounce'>
                 <Image
                   src={'/wavata.PNG'}
                   width={60}
                   height={60}
                   alt='logo'
                   objectFit='fill'
-                  className=' cursor-pointer '
+                  className='cursor-pointer'
                 />
               </div>
-              <span className='font-bold ml-3 md:block text-gray-300 hover:text-transparent bg-clip-text hover:bg-gradient-to-r hover:from-red-500 to hover:bg-purple-500'>
+              <span className='to ml-3 bg-clip-text font-bold text-gray-300 hover:bg-purple-500 hover:bg-linear-to-r hover:from-red-500 hover:text-transparent md:block'>
                 ThanhNguyen03
               </span>
             </Link>
-            <div className='h-full flex items-center justify-between custom-min1100:mr-20'>
-              <div className='flex items-center justify-between w-full h-[70%] border border-[#7042f861] bg-nav mr-4 px-10 py-2 rounded-full text-gray-200'>
+            <div className='custom-min1100:mr-20 flex h-full items-center justify-between'>
+              <div className='bg-nav mr-4 flex h-[70%] w-full items-center justify-between rounded-full border border-[#7042f861] px-10 py-2 text-gray-200'>
                 <ul className='flex items-center gap-20'>
                   <li
                     className={`group ${
@@ -66,12 +66,12 @@ const Navbar = () => {
                       href={'#about-me'}
                       className='flex flex-col items-center'
                     >
-                      <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer text-sm'>
+                      <span className='absolute z-50 translate-y-[-20px] cursor-pointer text-sm opacity-0'>
                         About Me
                       </span>
                       <div
                         style={{ backgroundImage: `url('/wavata.PNG')` }}
-                        className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'
+                        className='relative z-10 h-6 w-6 overflow-hidden rounded-full bg-cover'
                       >
                         {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                       </div>
@@ -82,23 +82,20 @@ const Navbar = () => {
                       activeSection === 'skills' ? 'active' : ''
                     }`}
                   >
-                    <Link
-                      href={'#skills'}
-                      className='flex flex-col items-center'
-                    >
-                      <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer'>
+                    <Link href='#skills' className='flex flex-col items-center'>
+                      <span className='absolute z-50 translate-y-[-20px] cursor-pointer opacity-0'>
                         Skills
                       </span>
                       <div
                         style={{ backgroundImage: `url('/competence.png')` }}
-                        className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'
+                        className='relative z-10 h-6 w-6 overflow-hidden rounded-full bg-cover'
                       >
                         {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                       </div>
                     </Link>
                   </li>
                   <li
-                    className={`flex flex-col items-center group ${
+                    className={`group flex flex-col items-center ${
                       activeSection === 'projects' ? 'active' : ''
                     }`}
                   >
@@ -106,12 +103,12 @@ const Navbar = () => {
                       href={'#projects'}
                       className='flex flex-col items-center'
                     >
-                      <span className='absolute z-50 opacity-0 translate-y-[-20px] cursor-pointer'>
+                      <span className='absolute z-50 translate-y-[-20px] cursor-pointer opacity-0'>
                         Projects
                       </span>
                       <div
                         style={{ backgroundImage: `url('/project.png')` }}
-                        className='relative overflow-hidden rounded-full z-10 w-6 h-6 bg-cover'
+                        className='relative z-10 h-6 w-6 overflow-hidden rounded-full bg-cover'
                       >
                         {/* <Image src={'/wavata.PNG'} width={30} height={30} alt='logo' objectFit='fill' className=' cursor-pointer '/> */}
                       </div>
@@ -124,7 +121,7 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-            <div className='md:flex gap-5 hidden'>
+            <div className='hidden gap-5 md:flex'>
               {SOCIAL_NAVIGATION.map((social) => (
                 <Link key={social.name} href={social.href}>
                   <Image
@@ -143,4 +140,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header

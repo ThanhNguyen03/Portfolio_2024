@@ -45,7 +45,7 @@ const Navbar = () => {
               className=' cursor-pointer '
             />
           </div>
-          <span className='font-bold ml-3 md:block text-gray-300 hover:text-transparent bg-clip-text hover:bg-gradient-to-r hover:from-red-500 to hover:bg-purple-500'>
+          <span className='font-bold ml-3 md:block text-gray-300 hover:text-transparent bg-clip-text hover:bg-linear-to-r hover:from-red-500 to hover:bg-purple-500'>
             ThanhNguyen03
           </span>
         </Link>

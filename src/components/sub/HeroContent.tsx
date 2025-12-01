@@ -17,7 +17,7 @@ const HeroContent = () => {
     >
       <div className='h-full w-full flex flex-col gap-5 justify-center m-auto md:text-start text-center'>
         <motion.div
-          className='Welcome-box py-4 px-4 border border-[#2653e78b] opacity-[0.9] custom-max:mx-auto'
+          className='Welcome-box py-4 px-4 border border-blue-500/55 opacity-[0.9] custom-max:mx-auto'
           variants={slideInFromTop}
         >
           <SparkleIcon className='text-pink-500/95 mr-3 h-6 w-6' />
@@ -31,7 +31,7 @@ const HeroContent = () => {
         >
           <div>
             <span className='custom-max1100:block'>Providing&nbsp;</span>
-            <span className='text-transparent bg-clip-text bg-gradient-to-r from-red-500 to bg-purple-500'>
+            <span className='text-transparent bg-clip-text bg-linear-to-r from-red-500 to bg-purple-500'>
               the best
             </span>
             <br />

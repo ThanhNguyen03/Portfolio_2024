@@ -1,13 +1,7 @@
-import {
-  Backend_skill,
-  Frontend_skill,
-  Full_stack,
-  Other_skill,
-  Skill_data,
-} from '@/src/constants'
 import React from 'react'
 import SkillDataProvider from '../sub/SkillDataProvider'
 import SkillText from '../sub/SkillText'
+import { ANOTHER_SKILL, BE_SKILL_DATA, FE_SKILL_DATA } from '@/constants'
 
 const Skills = () => {
   return (
@@ -18,10 +12,10 @@ const Skills = () => {
     >
       <SkillText />
       <div className='flex justify-around flex-wrap mt-4 gap-5 items-center'>
-        {Frontend_skill.map((image, index) => (
+        {FE_SKILL_DATA.map((image, index) => (
           <SkillDataProvider
             key={index}
-            src={image.Image}
+            src={image.image}
             width={image.width}
             height={image.height}
             index={index}
@@ -29,10 +23,10 @@ const Skills = () => {
         ))}
       </div>
       <div className='flex justify-around flex-wrap mt-4 gap-5 items-center'>
-        {Backend_skill.map((image, index) => (
+        {BE_SKILL_DATA.map((image, index) => (
           <SkillDataProvider
             key={index}
-            src={image.Image}
+            src={image.image}
             width={image.width}
             height={image.height}
             index={index}
@@ -40,10 +34,10 @@ const Skills = () => {
         ))}
       </div>
       <div className='flex justify-around flex-wrap mt-4 gap-5 items-center'>
-        {Other_skill.map((image, index) => (
+        {ANOTHER_SKILL.map((image, index) => (
           <SkillDataProvider
             key={index}
-            src={image.Image}
+            src={image.image}
             width={image.width}
             height={image.height}
             index={index}

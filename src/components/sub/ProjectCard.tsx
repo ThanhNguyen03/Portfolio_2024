@@ -56,7 +56,7 @@ const ProjectCard: FC<TProjectCardProps> = ({
         >
           <div className='absolute inset-0 w-full h-full rounded-md bg-black opacity-50 -z-10' />
           <div className='flex flex-col gap-4 md:gap-8 py-3 z-30'>
-            <h1 className='text-whote md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to bg-cyan-500'>
+            <h1 className='text-whote md:text-2xl font-semibold text-transparent bg-clip-text bg-linear-to-r from-gray-200 to bg-cyan-500'>
               {title}
             </h1>
             <p className='text-gray-200 text-sm md:h-[100px] line-clamp-3'>
@@ -65,13 +65,13 @@ const ProjectCard: FC<TProjectCardProps> = ({
             <div className='flex gap-4'>
               <Link
                 href={github}
-                className='z-30 px-6 py-2 rounded-full bg-purple-500/55 hover:bg-gradient-to-r hover:from-red-500 to hover:bg-purple-500 items-center text-center'
+                className='z-30 px-6 py-2 rounded-full bg-purple-500/55 hover:bg-linear-to-r hover:from-red-500 to hover:bg-purple-500 items-center text-center'
               >
                 Github
               </Link>
               <Link
                 href={website}
-                className='z-30 px-6 py-2 rounded-full bg-cyan-500/55 hover:bg-gradient-to-r hover:from-purple-500 to hover:bg-cyan-500 items-center text-center'
+                className='z-30 px-6 py-2 rounded-full bg-cyan-500/55 hover:bg-linear-to-r hover:from-purple-500 to hover:bg-cyan-500 items-center text-center'
               >
                 Website
               </Link>
