@@ -1,20 +1,20 @@
 'use client'
 
-import React, { FC, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
+import { FC, useRef } from 'react'
 
 type TSkillDataProviderProps = {
-  src: string
-  width: number
-  height: number
+  src: string | StaticImageData
+  width?: number
+  height?: number
   index: number
 }
 
 const SkillDataProvider: FC<TSkillDataProviderProps> = ({
   src,
-  width,
-  height,
+  width = 40,
+  height = 40,
   index,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)

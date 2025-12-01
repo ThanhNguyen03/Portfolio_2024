@@ -1,16 +1,15 @@
-import React from 'react'
 import ProjectCard from '../sub/ProjectCard'
 
 const Project = () => {
   return (
     <section
       id='projects'
-      className='flex flex-col items-center justify-center pb-20 custom-max1100:mx-auto px-5'
+      className='custom-max1100:mx-auto flex flex-col items-center justify-center px-5 pb-20'
     >
-      <h1 className='text-4xl font-semibold text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-cyan-500 py-20'>
+      <h1 className='bg-linear-to-r from-purple-500 to-cyan-500 bg-clip-text py-20 text-4xl font-semibold text-transparent'>
         My Projects
       </h1>
-      <div className='h-full w-full custom-min1100:flex gap-10 custom-min1100:px-10 z-30'>
+      <div className='custom-min1100:flex custom-min1100:px-10 z-30 h-full w-full gap-10'>
         <ProjectCard
           src='/fbcover.png'
           title='A Catering E-commerce Website'

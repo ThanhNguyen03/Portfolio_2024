@@ -1,3 +1,36 @@
+import { StaticImageData } from 'next/image'
+
+export const DELAY_TIME = 4000 // 4s
+
+type TNavigation = {
+  name: string
+  image: StaticImageData | string
+  href: string
+}
+export const SOCIAL_NAVIGATION: TNavigation[] = [
+  {
+    name: 'Facebook',
+    image: '/facebook.png',
+    href: 'https://www.facebook.com/thanhfnguyen.03',
+  },
+  {
+    name: 'LinkedIn',
+    image: '/linkedin.png',
+    href: 'https://www.linkedin.com/in/thanhfng12dev/',
+  },
+  {
+    name: 'Github',
+    image: '/gitwhite.png',
+    href: 'https://github.com/ThanhNguyen03',
+  },
+]
+
+type TSkill = {
+  name: string
+  image: StaticImageData | string
+  width?: number
+  height?: number
+}
 export const SKILL_DATA = [
   {
     name: 'Html',
@@ -72,26 +105,7 @@ export const SKILL_DATA = [
     height: 40,
   },
 ]
-
-export const SOCIAL_NAVIGATION = [
-  {
-    name: 'Facebook',
-    src: '/facebook.png',
-    href: 'https://www.facebook.com/thanhfnguyen.03',
-  },
-  {
-    name: 'LinkedIn',
-    src: '/linkedin.png',
-    href: 'https://www.linkedin.com/in/thanhfng12dev/',
-  },
-  {
-    name: 'Github',
-    src: '/gitwhite.png',
-    href: 'https://github.com/ThanhNguyen03',
-  },
-]
-
-export const FE_SKILL_DATA = [
+export const FE_SKILL_DATA: TSkill[] = [
   {
     name: 'Html',
     image: '/html.png',
@@ -147,8 +161,7 @@ export const FE_SKILL_DATA = [
     height: 80,
   },
 ]
-
-export const BE_SKILL_DATA = [
+export const BE_SKILL_DATA: TSkill[] = [
   {
     name: 'Node.js',
     image: '/node-js.png',
@@ -180,8 +193,7 @@ export const BE_SKILL_DATA = [
     height: 70,
   },
 ]
-
-export const ANOTHER_SKILL = [
+export const ANOTHER_SKILL: TSkill[] = [
   {
     name: 'Docker',
     image: '/docker.webp',

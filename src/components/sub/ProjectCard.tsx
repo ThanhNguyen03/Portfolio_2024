@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 
 type TProjectCardProps = {
   src: string
@@ -30,10 +30,10 @@ const ProjectCard: FC<TProjectCardProps> = ({
   return (
     <div
       onClick={handleFlip}
-      className='w-[80vw] h-[30vh] md:w-[450px] md:h-[280px] rounded-lg shadow-lg border border-blue-700 cursor-pointer z-30 mb-10'
+      className='z-30 mb-10 h-[30vh] w-[80vw] cursor-pointer rounded-lg border border-blue-700 shadow-lg md:h-[280px] md:w-[450px]'
     >
       <motion.div
-        className='flip-card-inner w-full h-full'
+        className='size-full transition-transform duration-700 transform-3d'
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 360 }}
         transition={{ duration: 0.6 }}
@@ -41,37 +41,37 @@ const ProjectCard: FC<TProjectCardProps> = ({
       >
         <div
           style={{ backgroundImage: `url(${src})` }}
-          className='w-full h-full group relative flip-card-front bg-cover bg-center text-white rounded-lg p-4'
+          className='group relative size-full rounded-lg bg-cover bg-center p-4 text-white backface-hidden'
         >
-          <div className='absolute inset-0 w-full h-full rounded-md bg-black opacity-0 group-hover:opacity-40' />
+          <div className='absolute inset-0 size-full rounded-md bg-black opacity-0 group-hover:opacity-40' />
           {!isFlipped && (
-            <div className='absolute inset-0 w-full h-full text-xl hidden group-hover:flex items-center z-20 justify-center'>
+            <div className='absolute inset-0 z-20 hidden size-full items-center justify-center text-xl group-hover:flex'>
               Learn more &gt;
             </div>
           )}
         </div>
         <div
           style={{ backgroundImage: `url(${src})` }}
-          className='w-full h-full group relative flip-card-back bg-cover bg-center text-white rounded-lg p-4'
+          className='group relative size-full rotate-y-180 rounded-lg bg-cover bg-center p-4 text-white backface-hidden'
         >
-          <div className='absolute inset-0 w-full h-full rounded-md bg-black opacity-50 -z-10' />
-          <div className='flex flex-col gap-4 md:gap-8 py-3 z-30'>
-            <h1 className='text-whote md:text-2xl font-semibold text-transparent bg-clip-text bg-linear-to-r from-gray-200 to bg-cyan-500'>
+          <div className='absolute inset-0 -z-10 size-full rounded-md bg-black opacity-50' />
+          <div className='z-30 flex flex-col gap-4 py-3 md:gap-8'>
+            <h1 className='text-whote to bg-cyan-500 bg-linear-to-r from-gray-200 bg-clip-text font-semibold text-transparent md:text-2xl'>
               {title}
             </h1>
-            <p className='text-gray-200 text-sm md:h-[100px] line-clamp-3'>
+            <p className='line-clamp-3 text-sm text-gray-200 md:h-[100px]'>
               {description}
             </p>
             <div className='flex gap-4'>
               <Link
                 href={github}
-                className='z-30 px-6 py-2 rounded-full bg-purple-500/55 hover:bg-linear-to-r hover:from-red-500 to hover:bg-purple-500 items-center text-center'
+                className='to z-30 items-center rounded-full bg-purple-500/55 px-6 py-2 text-center hover:bg-purple-500 hover:bg-linear-to-r hover:from-red-500'
               >
                 Github
               </Link>
               <Link
                 href={website}
-                className='z-30 px-6 py-2 rounded-full bg-cyan-500/55 hover:bg-linear-to-r hover:from-purple-500 to hover:bg-cyan-500 items-center text-center'
+                className='to z-30 items-center rounded-full bg-cyan-500/55 px-6 py-2 text-center hover:bg-cyan-500 hover:bg-linear-to-r hover:from-purple-500'
               >
                 Website
               </Link>

@@ -1,9 +1,10 @@
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
+import StarCanvas from '@/components/main/StarBackground'
+import { cn } from '@/utils/cn'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import StarCanvas from '@/components/main/StarBackground'
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +24,10 @@ export default function RootLayout({
         <link rel='icon' href='/black-hole.png' />
       </head>
       <body
-        className={`${inter.className} dark overflow-x-hidden overflow-y-scroll`}
+        className={cn(
+          'overflow-x-hidden overflow-y-scroll bg-[linear-gradient(90deg,rgba(0,0,0,1)_0%,rgba(1,0,6,0.95)_50%,rgba(0,0,0,1)_100%)]',
+          inter.className,
+        )}
       >
         <StarCanvas />
         <Header />

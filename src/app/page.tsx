@@ -3,18 +3,18 @@
 import Hero from '@/components/main/Hero'
 import Project from '@/components/main/Project'
 import Skills from '@/components/main/Skills'
+import { DELAY_TIME } from '@/constants'
 import { cn } from '@/utils/cn'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [delay, setDelay] = useState(false)
+  const [delay, setDelay] = useState<boolean>(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setDelay(true)
-    }, 4000)
+    }, DELAY_TIME)
 
-    // Cleanup timer on component unmount
     return () => clearTimeout(timer)
   }, [])
 
@@ -23,7 +23,7 @@ export default function Home() {
       <div
         className={cn(
           'flex flex-col gap-20',
-          !delay && 'overflow-y-hidden h-[100vh]'
+          !delay && 'h-screen overflow-y-hidden',
         )}
       >
         <Hero />

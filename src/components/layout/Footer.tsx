@@ -1,19 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='w-full h-full bg-transparent text-gray-200 shadow-lg p-4 z-30'>
-      <div className='w-full flex flex-col items-center justify-center m-auto'>
-        <div className='w-full h-full md:flex items-center justify-around flex-wrap'>
-          <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center justify-start'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
+    <div className='z-30 size-full bg-transparent p-4 text-gray-200 shadow-lg'>
+      <div className='m-auto flex w-full flex-col items-center justify-center'>
+        <div className='size-full flex-wrap items-center justify-around md:flex'>
+          <div className='mb-10 flex min-w-[200px] flex-col items-center justify-start md:mb-auto'>
+            <div className='to bg-purple-500 bg-linear-to-r from-cyan-500 bg-clip-text text-[16px] font-bold text-transparent'>
               Community
             </div>
             <Link
               href={'https://github.com/ThanhNguyen03'}
-              className='flex items-center my-4 cursor-pointer'
+              className='my-4 flex cursor-pointer items-center'
             >
               <Image
                 src={'/gitwhite.png'}
@@ -21,16 +20,16 @@ const Footer = () => {
                 width={28}
                 height={28}
               />
-              <span className='text-[15px] ml-2'>Github</span>
+              <span className='ml-2 text-[15px]'>Github</span>
             </Link>
           </div>
-          <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
+          <div className='mb-10 flex min-w-[200px] flex-col items-center md:mb-auto'>
+            <div className='to bg-purple-500 bg-linear-to-r from-cyan-500 bg-clip-text text-[16px] font-bold text-transparent'>
               Social Media
             </div>
             <Link
               href={'https://www.facebook.com/thanhfnguyen.03'}
-              className='flex items-center my-4 cursor-pointer justify-start'
+              className='my-4 flex cursor-pointer items-center justify-start'
             >
               <Image
                 src={'/facebook.png'}
@@ -42,7 +41,7 @@ const Footer = () => {
             </Link>
             <Link
               href={'https://www.instagram.com/thanhf.ng_/'}
-              className='flex items-center my-4 cursor-pointer justify-start'
+              className='my-4 flex cursor-pointer items-center justify-start'
             >
               <Image
                 src={'/instagram.png'}
@@ -54,7 +53,7 @@ const Footer = () => {
             </Link>
             <Link
               href={'https://www.linkedin.com/in/thanhfnguyen03/'}
-              className='flex items-center my-4 cursor-pointer justify-start'
+              className='my-4 flex cursor-pointer items-center justify-start'
             >
               <Image
                 src={'/linkedin.png'}
@@ -65,24 +64,24 @@ const Footer = () => {
               <span className='text-md ml-2'>LinkedIn</span>
             </Link>
           </div>
-          <div className='min-w-[200px] mb-10 md:mb-auto flex flex-col items-center justify-start'>
-            <div className='font-bold text-[16px] text-transparent bg-clip-text bg-linear-to-r from-cyan-500 to bg-purple-500'>
+          <div className='mb-10 flex min-w-[200px] flex-col items-center justify-start md:mb-auto'>
+            <div className='to bg-purple-500 bg-linear-to-r from-cyan-500 bg-clip-text text-[16px] font-bold text-transparent'>
               About
             </div>
-            <p className='flex items-center my-4'>
-              <span className='text-[15px] ml-2'>Learning about me</span>
+            <p className='my-4 flex items-center'>
+              <span className='ml-2 text-[15px]'>Learning about me</span>
             </p>
-            <p className='flex items-center my-4'>
-              <span className='text-[15px] ml-2 underline'>
+            <p className='my-4 flex items-center'>
+              <span className='ml-2 text-[15px] underline'>
                 thanhnguyen25011207@gmail.com
               </span>
             </p>
           </div>
         </div>
 
-        <div className='my-5 text-md text-center'>
+        <div className='text-md my-5 text-center'>
           &copy;&nbsp;
-          <span className='text-transparent bg-clip-text bg-linear-to-r from-red-500 to bg-purple-500'>
+          <span className='to bg-purple-500 bg-linear-to-r from-red-500 bg-clip-text text-transparent'>
             ThanhNguyen03
           </span>
           &nbsp;Developer 2024 Inc. All rights reserved

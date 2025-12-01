@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import HeroContent from '../sub/HeroContent'
 
 const Hero = () => {
@@ -24,14 +24,14 @@ const Hero = () => {
   }, [])
 
   return (
-    <section id='about-me' className='relative flex flex-col h-screen w-full'>
+    <section id='about-me' className='relative flex h-screen w-full flex-col'>
       {!video1Ended && (
         <video
           ref={video1Ref}
           autoPlay
           muted
           playsInline
-          className='absolute top-0 left-0 z-10 w-full h-full object-cover'
+          className='absolute top-0 left-0 z-10 size-full object-cover'
         >
           <source src='/vid_whole.mp4' type='video/mp4' />
         </video>
@@ -44,7 +44,7 @@ const Hero = () => {
             muted
             playsInline
             loop
-            className='absolute top-0 left-0 z-10 w-full h-full object-cover slideToTop'
+            className='slideToTop absolute top-0 left-0 z-10 size-full object-cover'
           >
             <source src='/vid_bhole.mp4' type='video/mp4' />
           </video>
