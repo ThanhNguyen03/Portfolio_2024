@@ -43,6 +43,16 @@ li.group.active div {
   @apply translate-y-[37px] transition-transform duration-500;
 }
 
+.dark {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(1, 0, 6, 0.95) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
 .indicator {
   z-index: 5;
   position: absolute;
@@ -92,16 +102,14 @@ ul li:nth-child(3).active ~ .indicator {
   transform: translateX(calc((104px * 2) - 13px));
 }
 
-/*=================KEY FRAME ANIMATION===============*/
-@keyframes slideToTop {
-  0% {
-    transform: translateY(0%);
+@theme {
+  --animate-slide-to-top: slideToTop 5s ease-in forwards;
+  @keyframes slideToTop {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-28%);
+    }
   }
-  100% {
-    transform: translateY(-28%);
-  }
-}
-
-.slideToTop {
-  animation: slideToTop 5s ease-in forwards;
 }

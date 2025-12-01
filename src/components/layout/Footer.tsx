@@ -1,10 +1,20 @@
+import { cn } from '@/utils/cn'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FC } from 'react'
 
-const Footer = () => {
+type TFooterProps = {
+  isInitVedioEnded?: boolean
+}
+const Footer: FC<TFooterProps> = ({ isInitVedioEnded }) => {
   return (
-    <div className='z-30 size-full bg-transparent p-4 text-gray-200 shadow-lg'>
-      <div className='m-auto flex w-full flex-col items-center justify-center'>
+    <footer
+      className={cn(
+        'z-30 size-full px-2 py-10 text-gray-200 shadow-lg md:px-6 md:py-20 lg:px-10',
+        !isInitVedioEnded && 'hidden',
+      )}
+    >
+      <div className='mx-auto flex w-full max-w-[1200px] flex-col items-center justify-center'>
         <div className='size-full flex-wrap items-center justify-around md:flex'>
           <div className='mb-10 flex min-w-[200px] flex-col items-center justify-start md:mb-auto'>
             <div className='to bg-purple-500 bg-linear-to-r from-cyan-500 bg-clip-text text-[16px] font-bold text-transparent'>
@@ -87,7 +97,7 @@ const Footer = () => {
           &nbsp;Developer 2024 Inc. All rights reserved
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

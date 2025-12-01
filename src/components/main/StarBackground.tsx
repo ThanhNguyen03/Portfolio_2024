@@ -5,13 +5,17 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import * as random from 'maath/random'
 import { Suspense, useRef, useState } from 'react'
 
+const POINTS = 5000
+
 const StarBackground = (props: any) => {
   const ref: any = useRef()
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 }),
+  const [sphere] = useState<Float32Array>(() =>
+    Float32Array.from(
+      random.inSphere(new Float32Array(POINTS * 3), { radius: 1.2 }),
+    ),
   )
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     ref.current.rotation.x -= delta / 10
     ref.current.rotation.y -= delta / 15
   })

@@ -1,7 +1,6 @@
 'use client'
 
-import { DELAY_TIME, SOCIAL_NAVIGATION } from '@/constants'
-import { cn } from '@/utils/cn'
+import { SOCIAL_NAVIGATION } from '@/constants'
 import { slideInFromTop } from '@/utils/motion'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -10,16 +9,6 @@ import { useEffect, useState } from 'react'
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState<string>('about-me')
-  const [delay, setDelay] = useState<boolean>(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDelay(true)
-    }, DELAY_TIME)
-
-    // Cleanup timer on component unmount
-    return () => clearTimeout(timer)
-  }, [])
 
   const handleScroll = () => {
     const sections = document.querySelectorAll('section')
@@ -43,14 +32,14 @@ const Header = () => {
   }, [])
 
   return (
-    <header className={cn(!delay && 'hidden size-full')}>
+    <header className='size-full'>
       <motion.div initial='hidden' animate='visible'>
         <motion.div variants={slideInFromTop}>
-          <div className='bg-back-700/10 fixed top-0 z-50 mx-auto h-[60px] w-full max-w-[1200px] px-10 shadow-lg shadow-blue-700/50 backdrop-blur-md'>
+          <div className='bg-black-700/10 fixed top-0 z-50 mx-auto h-[60px] w-full max-w-[1200px] px-10 shadow-lg shadow-[rgb(42,14,97,0.5)] backdrop-blur-md'>
             <div className='m-auto flex size-full items-center justify-center px-3 md:justify-between'>
               <Link
-                className='hidden h-auto w-auto items-center md:flex'
-                href={'#about-me'}
+                className='hidden size-[60px] items-center md:flex'
+                href='/'
               >
                 <div className='relative size-full overflow-hidden rounded-full hover:animate-bounce'>
                   <Image
