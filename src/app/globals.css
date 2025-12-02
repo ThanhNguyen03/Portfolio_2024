@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Lobster&display=swap');
 @import 'tailwindcss';
-
 @config '../../tailwind.config.ts';
+
+body {
+  @apply lining-nums;
+}
 
 @utility scrollbar-hidden {
   -ms-overflow-style: none; /* IE and Edge */
@@ -29,10 +32,6 @@ html {
 :root {
   --start-color: rgba(249, 73, 149, 0.612);
   --end-color: rgba(148, 188, 233, 0.675);
-}
-
-.cursive {
-  font-family: 'Cedarville Cursive', cursive;
 }
 
 li.group.active span {

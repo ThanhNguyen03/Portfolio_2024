@@ -1,4 +1,3 @@
-export { default as competence } from './competence.png'
 export { default as cssLogo } from './css.png'
 export { default as dotnetLogo } from './dot.png'
 export { default as facebookLogo } from './facebook.png'

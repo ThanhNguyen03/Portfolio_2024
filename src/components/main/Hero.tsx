@@ -28,18 +28,20 @@ const Hero: FC<THeroProps> = ({ setIsVideoEnded, isInitVideoEnded }) => {
   }, [])
 
   return (
-    <section id='about-me' className='relative flex h-screen w-full flex-col'>
-      {!isInitVideoEnded && (
-        <video
-          ref={video1Ref}
-          autoPlay
-          muted
-          playsInline
-          className='absolute top-0 left-0 z-10 size-full object-cover'
-        >
-          <source src='/vid_whole.mp4' type='video/mp4' />
-        </video>
-      )}
+    <section id='about-me' className='relative flex w-full flex-col'>
+      {!isInitVideoEnded ? (
+        <>
+          <video
+            ref={video1Ref}
+            autoPlay
+            muted
+            playsInline
+            className='pointer-events-none fixed inset-0 z-40 size-full object-cover'
+          >
+            <source src='/vid_whole.mp4' type='video/mp4' />
+          </video>
+        </>
+      ) : null}
       {isInitVideoEnded && (
         <>
           <video
@@ -48,11 +50,11 @@ const Hero: FC<THeroProps> = ({ setIsVideoEnded, isInitVideoEnded }) => {
             muted
             playsInline
             loop
-            className='animate-slide-to-top absolute top-0 left-0 z-10 size-full overflow-y-hidden object-cover'
+            className='animate-slide-to-top pointer-events-none absolute inset-0 z-10 size-full overflow-y-hidden object-cover'
           >
             <source src='/vid_bhole.mp4' type='video/mp4' />
           </video>
-          <HeroContent />
+          <HeroContent isInitVideoEnded={isInitVideoEnded} />
         </>
       )}
     </section>

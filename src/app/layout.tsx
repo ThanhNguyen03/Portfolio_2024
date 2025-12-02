@@ -1,10 +1,5 @@
-import StarCanvas from '@/components/main/StarBackground'
-import { cn } from '@/utils/cn'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Porfolio',
@@ -21,13 +16,7 @@ export default function RootLayout({
       <head>
         <link rel='icon' href='/black-hole.png' />
       </head>
-      <body
-        className={cn(
-          inter.className,
-          'dark overflow-x-hidden overflow-y-scroll',
-        )}
-      >
-        <StarCanvas />
+      <body className='font-raleway dark overflow-x-hidden overflow-y-scroll'>
         {children}
       </body>
     </html>
