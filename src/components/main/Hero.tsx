@@ -36,7 +36,7 @@ const Hero: FC<THeroProps> = ({ setIsVideoEnded, isInitVideoEnded }) => {
             autoPlay
             muted
             playsInline
-            className='pointer-events-none fixed inset-0 z-40 size-full object-cover'
+            className='pointer-events-none fixed inset-0 z-0 size-full object-cover'
           >
             <source src='/vid_whole.mp4' type='video/mp4' />
           </video>

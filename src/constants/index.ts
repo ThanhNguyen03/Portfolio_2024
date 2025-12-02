@@ -23,8 +23,9 @@ export const DELAY_TIME = 4000 // 4s
 
 type TNavigation = {
   name: string
-  image: StaticImageData | string
+  image?: StaticImageData | string
   href: string
+  openNewTab?: boolean
 }
 export const SOCIAL_NAVIGATION: TNavigation[] = [
   {
@@ -236,5 +237,28 @@ export const ANOTHER_SKILL: TSkill[] = [
     image: postmanLogo,
     width: 70,
     height: 70,
+  },
+]
+
+export const LIST_FOOTER_NAVIGATION: Array<
+  Record<'title', string> & {
+    children: TNavigation[]
+  }
+> = [
+  {
+    title: 'Developers',
+    children: [
+      { href: '/', name: 'Homepage' },
+      { href: 'https://github.com/ThanhNguyen03', name: 'Github' },
+    ],
+  },
+  {
+    title: 'Contact',
+    children: [
+      { href: 'https://m.me/thanhfnguyen.03', name: 'Facebook' },
+      { href: 'https://ig.me/m/thanhf.ng_', name: 'Instagram' },
+      { href: 'https://www.linkedin.com/in/thanhfnguyen03/', name: 'LinkedIn' },
+      { href: 'https://t.me/thanhf.ng_', name: 'Telegram' },
+    ],
   },
 ]

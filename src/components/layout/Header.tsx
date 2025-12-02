@@ -282,7 +282,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
               {SOCIAL_NAVIGATION.map((social) => (
                 <Link key={social.name} href={social.href}>
                   <Image
-                    src={social.image}
+                    src={social.image || ''}
                     alt={social.name}
                     width={28}
                     height={28}
