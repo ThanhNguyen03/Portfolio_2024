@@ -1,22 +1,14 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import Image, { StaticImageData } from 'next/image'
 import { FC, useRef } from 'react'
 
 type TSkillDataProviderProps = {
-  src: string | StaticImageData
-  width?: number
-  height?: number
+  icon: React.ReactNode
   index: number
 }
 
-const SkillDataProvider: FC<TSkillDataProviderProps> = ({
-  src,
-  width = 40,
-  height = 40,
-  index,
-}) => {
+const SkillDataProvider: FC<TSkillDataProviderProps> = ({ icon, index }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInview = useInView(containerRef, {
     once: true,
@@ -27,7 +19,7 @@ const SkillDataProvider: FC<TSkillDataProviderProps> = ({
     visible: { opacity: 1 },
   }
 
-  const animationDelay = 0.3
+  const animationDelay = 0.1
 
   return (
     <motion.div
@@ -38,7 +30,7 @@ const SkillDataProvider: FC<TSkillDataProviderProps> = ({
       custom={index}
       transition={{ delay: index * animationDelay }}
     >
-      <Image src={src} alt='skill image' width={width} height={height} />
+      {icon}
     </motion.div>
   )
 }

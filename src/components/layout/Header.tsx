@@ -138,7 +138,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
 
     const el = document.getElementById(HEADER_NAVIGATION[index].id)
     if (el) {
-      const headerOffset = 60
+      const headerOffset = 0
       window.scrollTo({
         top: Math.max(0, el.offsetTop - headerOffset),
         behavior: 'smooth',
@@ -177,7 +177,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
         return
       }
 
-      const headerOffset = 200
+      const headerOffset = 400
       const scrollY = window.scrollY
       let found = -1
       for (let i = 0; i < HEADER_NAVIGATION.length; i++) {

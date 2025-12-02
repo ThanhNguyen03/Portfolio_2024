@@ -14,7 +14,7 @@ type THeroContentProps = {
 const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
   return (
     <motion.div
-      className='z-20 flex w-full items-center justify-center px-2 py-10 will-change-transform md:px-6 md:py-30 lg:px-10 lg:pt-50 lg:pb-30'
+      className='z-20 flex h-screen w-full items-center justify-center px-2 pt-10 will-change-transform md:px-6 md:pt-20 lg:px-10'
       initial='hidden'
       animate='visible'
     >
