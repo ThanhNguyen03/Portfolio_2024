@@ -3,7 +3,7 @@ import { cn } from '@/utils/cn'
 import { MailboxIcon } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { FC } from 'react'
-import { SpaceLogo } from '../sub/SpaceLogo'
+import { SpaceLogo } from '../ui/SpaceLogo'
 
 type TFooterProps = {
   isInitVideoEnded?: boolean

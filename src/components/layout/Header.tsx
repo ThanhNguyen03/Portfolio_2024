@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { SpaceLogo } from '../sub/SpaceLogo'
+import { SpaceLogo } from '../ui/SpaceLogo'
 import MobileHeader from './MobileHeader'
 
 type THeaderProps = {

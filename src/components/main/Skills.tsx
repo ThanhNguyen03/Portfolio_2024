@@ -4,8 +4,8 @@ import {
   FE_SKILL_DATA,
   LANGUAGES_SKILL,
 } from '@/constants'
-import SkillDataProvider from '../sub/SkillDataProvider'
-import SkillText from '../sub/SkillText'
+import SkillDataProvider from '../ui/SkillDataProvider'
+import SkillText from '../ui/SkillText'
 
 const Skills = () => {
   return (

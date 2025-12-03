@@ -1,4 +1,4 @@
-import ProjectCard from '../sub/ProjectCard'
+import ProjectCard from '../ui/ProjectCard'
 
 const Project = () => {
   return (

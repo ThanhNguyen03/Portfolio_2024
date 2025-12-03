@@ -8,6 +8,7 @@ import { SparkleIcon } from '@phosphor-icons/react/dist/ssr'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FC } from 'react'
+import { TypingText } from './TypingText'
 type THeroContentProps = {
   isInitVideoEnded?: boolean
 }
@@ -32,31 +33,48 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
             </h1>
           </motion.div>
           <motion.div
-            className='text-bold mt-6 flex h-auto w-auto max-w-[600px] flex-col gap-6 text-6xl leading-none text-white will-change-transform'
+            className='text-55 mt-6 h-auto w-full max-w-[600px] font-semibold text-white will-change-transform'
             variants={slideInFromLeft(1)}
             initial='hidden'
             animate={isInitVideoEnded ? 'visible' : 'hidden'}
           >
-            <div>
-              Building&nbsp;
-              <span className='bg-linear-to-r from-red-500 to-purple-500 bg-clip-text text-transparent'>
-                secure and scalable
-              </span>
-              <br />
-              solutions
-            </div>
+            Building&nbsp;
+            <br />
+            <TypingText
+              sequence={[
+                'Secure',
+                1000,
+                'Scalable',
+                1000,
+                'High-performance',
+                1000,
+                'User-centric',
+                1000,
+              ]}
+              speed={60}
+              deletionSpeed={40}
+              repeat={Infinity}
+              className='bg-linear-to-r from-red-500 to-purple-500 bg-clip-text font-semibold text-transparent'
+            />
+            <br />
+            systems
           </motion.div>
           <motion.p
-            className='my-5 max-w-[600px] text-lg text-gray-400 will-change-transform'
+            className='my-5 max-w-[600px] text-lg text-white/70 will-change-transform'
             variants={slideInFromLeft(1.5)}
             initial='hidden'
             animate={isInitVideoEnded ? 'visible' : 'hidden'}
           >
-            I&apos;m a FrontEnd Developer with exprience in Website, Mobile.
-            Check out my projects and skills.
+            <strong className='text-primary-300'>Software Engineer</strong> with
+            2+ years of professional development experience in both{' '}
+            <strong className='text-secondary-300'>Frontend</strong> &{' '}
+            <strong className='text-pink-300'>Backend</strong>. <br />
+            Have 1+ year of experience working with{' '}
+            <strong className='text-violet-300'>Web3 technologies</strong>, and
+            blockchain ecosystems
           </motion.p>
           <motion.a
-            className='bg-[linear-gradient(180deg,rgba(48,144,241,0)0%,rgba(81,178,219,0.32)100%), rgba(47,68,255,0.12)] hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)0%,rgba(60,8,126,0.42)100%), rgba(113,47,255,0.24)] max-w-[200px] cursor-pointer rounded-lg border border-white/30 px-8 py-2 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition will-change-transform hover:shadow-[inset_0_0_12px_#bf97ff70]'
+            className='bg-[linear-gradient(180deg,rgba(48,144,241,0)0%,rgba(81,178,219,0.32)100%), rgba(47,68,255,0.12)] hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)0%,rgba(60,8,126,0.42)100%), rgba(113,47,255,0.24)] hover:text-primary-300 max-w-[200px] cursor-pointer rounded-lg border border-white/30 px-8 py-2 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 will-change-transform hover:shadow-[inset_0_0_12px_#bf97ff70]'
             href='#skills'
             variants={slideInFromLeft(2)}
             initial='hidden'

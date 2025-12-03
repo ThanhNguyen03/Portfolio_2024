@@ -1,7 +1,7 @@
 'use client'
 
 import { FC, useEffect, useRef } from 'react'
-import HeroContent from '../sub/HeroContent'
+import HeroContent from '../ui/HeroContent'
 
 type THeroProps = {
   isInitVideoEnded?: boolean
