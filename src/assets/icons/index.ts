@@ -1,3 +1,4 @@
+export { default as angularLogo } from './angular.png'
 export { default as apolloClientLogo } from './apollo-client.png'
 export { default as cSharpLogo } from './c-sharp.png'
 export { default as cssLogo } from './css.png'

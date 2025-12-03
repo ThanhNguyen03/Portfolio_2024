@@ -6,10 +6,10 @@ export const SpaceLogo = () => {
   return (
     <Link href='/' className='z-10 flex items-center justify-center gap-2 py-2'>
       {/* logo */}
-      <div className='rounded-1 border-dark-600/10 border bg-linear-to-br from-pink-200/30 to-violet-200/30 p-0.75 shadow'>
+      <div className='shadow'>
         <Image
-          width={32}
-          height={32}
+          width={40}
+          height={40}
           className='text-primary-600 size-8'
           alt='space logo'
           src='/black-hole.png'

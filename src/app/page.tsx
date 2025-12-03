@@ -16,24 +16,23 @@ export default function Home() {
     <>
       <StarCanvas />
       <Header isInitVideoEnded={isVideoEnded} />
-      <main className='size-full overflow-x-hidden'>
-        <div
-          className={cn(
-            'flex size-full flex-col gap-20',
-            // !delay && 'overflow-y-hidden',
-          )}
-        >
-          <Hero
-            isInitVideoEnded={isVideoEnded}
-            setIsVideoEnded={setIsVideo1Ended}
-          />
-          {isVideoEnded && (
-            <>
-              <Skills />
-              <Project />
-            </>
-          )}
-        </div>
+      <main
+        id='main'
+        className={cn(
+          'flex size-full flex-col gap-20 overflow-x-hidden',
+          isVideoEnded && 'overflow-hidden',
+        )}
+      >
+        <Hero
+          isInitVideoEnded={isVideoEnded}
+          setIsVideoEnded={setIsVideo1Ended}
+        />
+        {isVideoEnded && (
+          <>
+            <Skills />
+            <Project />
+          </>
+        )}
       </main>
       <Footer isInitVideoEnded={isVideoEnded} />
     </>

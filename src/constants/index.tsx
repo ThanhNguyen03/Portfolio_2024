@@ -1,4 +1,5 @@
 import {
+  angularLogo,
   apolloClientLogo,
   cSharpLogo,
   cssLogo,
@@ -70,7 +71,11 @@ export const LANGUAGES_SKILL: TSkill[] = [
   },
   {
     name: 'Css',
-    icon: <Image src={cssLogo} alt='css' width={80} height={80} />,
+    icon: <Image src={cssLogo} alt='css' width={95} height={95} />,
+  },
+  {
+    name: 'C#',
+    icon: <Image src={cSharpLogo} alt='c sharp' width={75} height={75} />,
   },
   {
     name: 'JavaScript',
@@ -81,8 +86,8 @@ export const LANGUAGES_SKILL: TSkill[] = [
     icon: <Image src={typescriptLogo} alt='ts' width={70} height={70} />,
   },
   {
-    name: 'C#',
-    icon: <Image src={cSharpLogo} alt='ts' width={80} height={80} />,
+    name: 'Angular',
+    icon: <Image src={angularLogo} alt='angular' width={65} height={65} />,
   },
 ]
 export const FE_SKILL_DATA: TSkill[] = [

@@ -12,7 +12,7 @@ const Footer: FC<TFooterProps> = ({ isInitVideoEnded }) => {
   return (
     <footer
       className={cn(
-        'relative z-30 size-full px-2 py-10 shadow-lg md:px-6 md:py-20 lg:px-10',
+        'relative z-30 size-full px-2 pt-10 shadow-lg md:px-6 md:pt-20 lg:px-10',
         !isInitVideoEnded && 'hidden',
       )}
     >

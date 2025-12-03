@@ -6,12 +6,16 @@ import { slideInFromTop } from '@/utils/motion'
 import {
   CodesandboxLogoIcon,
   DevToLogoIcon,
+  ListIcon,
   RocketLaunchIcon,
+  XIcon,
 } from '@phosphor-icons/react/dist/ssr'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { SpaceLogo } from '../sub/SpaceLogo'
+import MobileHeader from './MobileHeader'
 
 const HEADER_NAVIGATION = [
   {
@@ -37,6 +41,8 @@ type THeaderProps = {
   isInitVideoEnded?: boolean
 }
 const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
+  const [openMobile, setOpenMobile] = useState<boolean>(false)
+
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [targetIndex, setTargetIndex] = useState<number | null>(null)
   const [itemPositions, setItemPositions] = useState<
@@ -217,27 +223,35 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
     }
   }, [])
 
+  useEffect(() => {
+    const el = document.getElementById('main')
+    if (openMobile) {
+      document.body.classList.add('overflow-hidden', 'lg:overflow-auto')
+      el?.classList.add('overflow-hidden', 'lg:overflow-auto')
+    } else {
+      document.body.classList.remove('overflow-hidden', 'lg:overflow-auto')
+      el?.classList.remove('overflow-hidden', 'lg:overflow-auto')
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden', 'lg:overflow-auto')
+      el?.classList.remove('overflow-hidden', 'lg:overflow-auto')
+    }
+  }, [openMobile])
+
   return (
-    <header className='bg-black-700/10 fixed top-0 z-70 w-full px-2 shadow-lg shadow-[rgb(42,14,97,0.5)] backdrop-blur-md md:px-6 lg:px-10'>
+    <header className='bg-black-700/10 fixed top-0 z-70 w-full shadow-lg shadow-[rgb(42,14,97,0.5)] backdrop-blur-md'>
       {isInitVideoEnded && (
         <motion.div
           variants={slideInFromTop}
           initial='hidden'
           animate='visible'
-          className='size-full'
+          className='size-full px-2 md:px-6 lg:px-10'
           transition={{ duration: 0.6 }}
         >
-          <div className='relative mx-auto flex min-h-15 w-full max-w-[1200px] items-center justify-between'>
-            <Link
-              className='rounded-3 flex items-center justify-center border border-white/10 bg-white/30 px-4 py-1 duration-300'
-              href='/'
-            >
-              <p className='font-lobster from-pink-300 bg-clip-text font-bold text-white duration-300 hover:bg-violet-200 hover:bg-linear-to-r hover:text-transparent md:block'>
-                thanhf.ng_
-              </p>
-            </Link>
+          <div className='relative z-10 mx-auto flex min-h-15 w-full max-w-[1200px] items-center justify-between'>
+            <SpaceLogo />
 
-            <div className='absolute left-1/2 flex h-full -translate-x-1/2 items-center justify-center py-2'>
+            <div className='absolute left-1/2 hidden h-full -translate-x-1/2 items-center justify-center py-2 md:flex'>
               <nav
                 ref={navWrapperRef}
                 className='relative flex h-full w-fit items-center justify-center gap-6 rounded-full border border-[#7042f861] bg-violet-300/10 p-1 text-gray-200 md:gap-10'
@@ -290,7 +304,24 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
                 </Link>
               ))}
             </div>
+            <button
+              onClick={() => setOpenMobile(!openMobile)}
+              className={cn(
+                'rounded-2 aspect-square cursor-pointer border-white/30 bg-violet-200/20 p-1.5 duration-500 hover:border-pink-200',
+                openMobile ? 'text-primary-500' : 'text-secondary-500',
+              )}
+            >
+              {openMobile ? (
+                <XIcon size={24} weight='bold' />
+              ) : (
+                <ListIcon size={24} weight='bold' />
+              )}
+            </button>
           </div>
+          <MobileHeader
+            onClose={() => setOpenMobile(false)}
+            isOpen={openMobile}
+          />
         </motion.div>
       )}
     </header>
