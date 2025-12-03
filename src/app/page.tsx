@@ -14,6 +14,10 @@ export default function Home() {
 
   return (
     <>
+      <div className='text-18 center font-shantell z-1000 h-screen bg-black text-white sm:hidden'>
+        Page is not support for this viewport!
+      </div>
+
       <StarCanvas />
       <Header isInitVideoEnded={isVideoEnded} />
       <main
@@ -21,6 +25,7 @@ export default function Home() {
         className={cn(
           'flex size-full flex-col gap-20 overflow-x-hidden',
           isVideoEnded && 'overflow-hidden',
+          'max-[425px]:hidden',
         )}
       >
         <Hero
