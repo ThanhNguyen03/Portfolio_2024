@@ -28,7 +28,7 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
           >
             <SparkleIcon className='mr-3 h-6 w-6 text-pink-500/95' />
             <h1 className='md:bg-[linear-gradient(0deg,rgba(255,255,255,0.4),rgba(255,255,255,0.4)), linear-gradient(0deg,rgba(244,97,187,1)0%,rgba(241,110,83,1)35%, rgba(135,221,241,0.98)100%)] bg-white bg-clip-text text-sm font-semibold text-transparent bg-blend-normal'>
-              FrontEnd Developer Portfolio
+              Full-Stack Developer | Web3 & Blockchain
             </h1>
           </motion.div>
           <motion.div
@@ -38,12 +38,12 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
             animate={isInitVideoEnded ? 'visible' : 'hidden'}
           >
             <div>
-              Providing&nbsp;
+              Building&nbsp;
               <span className='bg-linear-to-r from-red-500 to-purple-500 bg-clip-text text-transparent'>
-                the best
+                secure and scalable
               </span>
               <br />
-              project expreience
+              solutions
             </div>
           </motion.div>
           <motion.p

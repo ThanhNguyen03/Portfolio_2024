@@ -30,6 +30,11 @@ import {
   viemLogo,
   wagmiLogo,
 } from '@/assets/icons'
+import {
+  CodesandboxLogoIcon,
+  DevToLogoIcon,
+  RocketLaunchIcon,
+} from '@phosphor-icons/react/dist/ssr'
 import Image, { StaticImageData } from 'next/image'
 
 export const DELAY_TIME = 4000 // 4s
@@ -55,6 +60,41 @@ export const SOCIAL_NAVIGATION: TNavigation[] = [
     name: 'Github',
     image: githubLogoWhite,
     href: 'https://github.com/ThanhNguyen03',
+  },
+]
+export const HEADER_NAVIGATION = [
+  {
+    id: 'about-me',
+    icon: (
+      <DevToLogoIcon
+        weight='fill'
+        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        size={24}
+      />
+    ),
+    label: 'About',
+  },
+  {
+    id: 'skills',
+    icon: (
+      <CodesandboxLogoIcon
+        weight='fill'
+        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        size={24}
+      />
+    ),
+    label: 'Skills',
+  },
+  {
+    id: 'projects',
+    icon: (
+      <RocketLaunchIcon
+        weight='fill'
+        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        size={24}
+      />
+    ),
+    label: 'Projects',
   },
 ]
 

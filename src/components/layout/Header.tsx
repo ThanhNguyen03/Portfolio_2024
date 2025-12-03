@@ -1,41 +1,15 @@
 'use client'
 
-import { SOCIAL_NAVIGATION } from '@/constants'
+import { HEADER_NAVIGATION, SOCIAL_NAVIGATION } from '@/constants'
 import { cn } from '@/utils/cn'
 import { slideInFromTop } from '@/utils/motion'
-import {
-  CodesandboxLogoIcon,
-  DevToLogoIcon,
-  ListIcon,
-  RocketLaunchIcon,
-  XIcon,
-} from '@phosphor-icons/react/dist/ssr'
+import { ListIcon, XIcon } from '@phosphor-icons/react/dist/ssr'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { SpaceLogo } from '../sub/SpaceLogo'
 import MobileHeader from './MobileHeader'
-
-const HEADER_NAVIGATION = [
-  {
-    id: 'about-me',
-    icon: <DevToLogoIcon weight='fill' className='text-red-500' size={24} />,
-    label: 'About',
-  },
-  {
-    id: 'skills',
-    icon: (
-      <CodesandboxLogoIcon weight='fill' className='text-red-500' size={24} />
-    ),
-    label: 'Skills',
-  },
-  {
-    id: 'projects',
-    icon: <RocketLaunchIcon weight='fill' className='text-red-500' size={24} />,
-    label: 'Projects',
-  },
-]
 
 type THeaderProps = {
   isInitVideoEnded?: boolean
@@ -224,18 +198,13 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
   }, [])
 
   useEffect(() => {
-    const el = document.getElementById('main')
     if (openMobile) {
-      document.body.classList.add('overflow-hidden', 'lg:overflow-auto')
-      el?.classList.add('overflow-hidden', 'lg:overflow-auto')
+      document.body.classList.add('overflow-hidden!', 'lg:overflow-auto!')
     } else {
-      document.body.classList.remove('overflow-hidden', 'lg:overflow-auto')
-      el?.classList.remove('overflow-hidden', 'lg:overflow-auto')
+      document.body.classList.remove('overflow-hidden!', 'lg:overflow-auto!')
     }
-    return () => {
-      document.body.classList.remove('overflow-hidden', 'lg:overflow-auto')
-      el?.classList.remove('overflow-hidden', 'lg:overflow-auto')
-    }
+    return () =>
+      document.body.classList.remove('overflow-hidden!', 'lg:overflow-auto!')
   }, [openMobile])
 
   return (
@@ -307,7 +276,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
             <button
               onClick={() => setOpenMobile(!openMobile)}
               className={cn(
-                'rounded-2 aspect-square cursor-pointer border-white/30 bg-violet-200/20 p-1.5 duration-500 hover:border-pink-200',
+                'rounded-2 aspect-square cursor-pointer border-white/30 bg-violet-200/20 p-1.5 duration-500 hover:border-pink-200 md:hidden',
                 openMobile ? 'text-primary-500' : 'text-secondary-500',
               )}
             >
@@ -321,6 +290,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
           <MobileHeader
             onClose={() => setOpenMobile(false)}
             isOpen={openMobile}
+            activeIndex={activeIndex}
           />
         </motion.div>
       )}
