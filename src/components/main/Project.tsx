@@ -8,7 +8,7 @@ const Project = () => {
       className='relative overflow-hidden px-2 py-10 md:px-6 md:py-20 lg:px-10'
     >
       <div className='center mx-auto w-full max-w-[1200px] flex-col gap-10'>
-        <h1 className='bg-linear-to-r from-purple-500 to-cyan-500 bg-clip-text text-4xl font-semibold text-transparent'>
+        <h1 className='bg-linear-to-r from-cyan-500 to-violet-500 bg-clip-text text-4xl font-semibold text-transparent'>
           My Projects
         </h1>
         <div className='flex size-full flex-col items-start gap-6'>
@@ -18,13 +18,18 @@ const Project = () => {
             role='Fullstack'
             github='https://github.com/ThanhNguyen03/ngoo-cf-2025'
             website='https://ngoo-cf-2025.vercel.app/'
-            description={
+            description='A 3D-animated, real-time food ordering website with friendly UX.
+                Implement multi-authentication, multi-payment integrations with
+                high secure service.'
+            detailDescription={
               <>
                 A 3D-animated, real-time food ordering website with friendly UX.
                 Implement multi-authentication, multi-payment integrations with
-                high secure service.<br></br>
-                Front End:
-                <ul className='list-outside list-disc pl-3'>
+                high secure service.
+                <br />
+                <br />
+                <strong>Front End:</strong>
+                <ul className='list-outside list-disc pl-5'>
                   <li>
                     Implement micro-interactions with Framer Motion and 3D
                     components via ThreeJS
@@ -40,8 +45,8 @@ const Project = () => {
                   </li>
                 </ul>
                 <br />
-                Back End:
-                <ul className='list-outside list-disc pl-3'>
+                <strong>Back End:</strong>
+                <ul className='list-outside list-disc pl-5'>
                   <li>
                     Secure Authentication by built-in puredly JWT-based auth
                     handling (no external auth libraries), handling
@@ -67,8 +72,7 @@ const Project = () => {
             role='Front-End'
             github='https://github.com/ThanhNguyen03/Angular_WeatherApp'
             website='https://thanhng-weather-app.vercel.app/'
-            description='This website will display weather information such as temperature,
-                precipitation, wind,... by searching by the name of the city you want to know.'
+            description='Real-time search for weather & city suggestions. This website will display weather information such as temperature, precipitation, wind measurement... by searching by the name of the city you want to know. Organized Angular services for clean REST communication.'
           />
         </div>
       </div>

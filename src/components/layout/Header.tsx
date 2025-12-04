@@ -118,7 +118,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
 
     const el = document.getElementById(HEADER_NAVIGATION[index].id)
     if (el) {
-      const headerOffset = 0
+      const headerOffset = 60
       window.scrollTo({
         top: Math.max(0, el.offsetTop - headerOffset),
         behavior: 'smooth',
@@ -223,7 +223,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
             <div className='absolute left-1/2 hidden h-full -translate-x-1/2 items-center justify-center py-2 md:flex'>
               <nav
                 ref={navWrapperRef}
-                className='relative flex h-full w-fit items-center justify-center gap-6 rounded-full border border-[#7042f861] bg-violet-300/10 p-1 text-gray-200 md:gap-10'
+                className='relative flex h-full w-fit items-center justify-center gap-6 rounded-full border border-[#7042f861] bg-violet-300/10 p-1 md:gap-10'
               >
                 {HEADER_NAVIGATION.map((link, i) => (
                   <Link
@@ -231,14 +231,16 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
                     ref={(el) => {
                       navRefs.current[i] = el
                     }}
+                    data-active={activeIndex === i}
                     href={`#${link.id}`}
                     onClick={(e) => {
                       e.preventDefault()
                       handleClickNavigation(i)
                     }}
                     className={cn(
-                      'text-18! font-small-caps relative flex size-full items-center gap-2 px-4 font-bold transition-all duration-300',
-                      'hover:',
+                      'text-18! group font-small-caps relative flex size-full items-center gap-2 px-4 text-white/50 transition-all duration-300',
+                      'hover:font-bold hover:text-white',
+                      activeIndex === i && 'text-secondary-300 font-bold',
                     )}
                   >
                     {link.icon}

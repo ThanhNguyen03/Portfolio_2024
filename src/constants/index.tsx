@@ -68,7 +68,7 @@ export const HEADER_NAVIGATION = [
     icon: (
       <DevToLogoIcon
         weight='fill'
-        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        className='size-7 group-data-[active=true]:text-pink-300 md:size-6'
         size={24}
       />
     ),
@@ -79,7 +79,7 @@ export const HEADER_NAVIGATION = [
     icon: (
       <CodesandboxLogoIcon
         weight='fill'
-        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        className='size-7 group-data-[active=true]:text-red-500 md:size-6'
         size={24}
       />
     ),
@@ -90,7 +90,7 @@ export const HEADER_NAVIGATION = [
     icon: (
       <RocketLaunchIcon
         weight='fill'
-        className='size-7 group-data-[active=true]:text-pink-300 md:size-6 md:text-red-500'
+        className='size-7 group-data-[active=true]:text-red-500 md:size-6'
         size={24}
       />
     ),
