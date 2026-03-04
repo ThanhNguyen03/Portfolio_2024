@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import Hero from '@/components/main/Hero'
 import Project from '@/components/main/Project'
+import { SkillKeyboard } from '@/components/main/SkillKeyBoard'
 import Skills from '@/components/main/Skills'
 import StarCanvas from '@/components/main/StarBackground'
 import { cn } from '@/utils/cn'
@@ -36,6 +37,7 @@ export default function Home() {
           <>
             <Skills />
             <Project />
+            <SkillKeyboard />
           </>
         )}
       </main>

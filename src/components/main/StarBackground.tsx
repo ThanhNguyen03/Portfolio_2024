@@ -7,7 +7,7 @@ import { Suspense, useRef, useState } from 'react'
 
 const POINTS = 5000
 
-const StarBackground = (props: any) => {
+const StarBackground = () => {
   const ref: any = useRef()
   const [sphere] = useState<Float32Array>(() =>
     Float32Array.from(
@@ -22,7 +22,7 @@ const StarBackground = (props: any) => {
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled>
         <PointMaterial
           transparent
           color={'#fff'}
