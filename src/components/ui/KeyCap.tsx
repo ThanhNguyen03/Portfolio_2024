@@ -249,7 +249,6 @@ const KeycapLegend: FC<TKeycapLegendProps> = ({ theme }) => {
         position={theme.position || [0, 0, 0]}
         center
         transform
-        occlude
         rotation={[-Math.PI / 2, 0, 0]}
       >
         {theme.text}

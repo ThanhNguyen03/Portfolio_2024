@@ -2,11 +2,35 @@
 
 import {
   angularLogo,
+  apolloLogo,
   cSharpLogo,
   cssLogo,
+  dockerLogo,
+  ethersLogo,
+  expressJSLogo,
+  figmaLogo,
+  framerMotionLogo,
+  gitLogo,
+  grahqlLogo,
   htmlLogo,
   jsLogo,
+  mongoDBLogo,
+  nextJSLogo,
+  nodeJSLogo,
+  postgreSqlLogo,
+  postmanLogo,
+  reactLogo,
+  redisLogo,
+  socketLogo,
+  sqlServerLogo,
+  tailwindLogo,
+  threeLogo,
   typescriptLogo,
+  vercelLogo,
+  viemLogo,
+  vitejsLogo,
+  vitestLogo,
+  wagmiLogo,
 } from '@/assets/icons'
 import { Environment } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -16,303 +40,463 @@ import { Keycap, type TKeycapTheme } from '../ui/KeyCap'
 
 // List of themes for the keyboard
 const KEYBOARD_THEMES: TKeycapTheme[] = [
+  // row 1
   {
-    bodyColor: '#E44D26',
-    textColor: '#ffffff',
-    text: <Image src={htmlLogo} alt='html' width={27} height={27} />,
-    material: 'plastic',
-    position: [0.1, 0.5, -0.4],
-  },
-  {
-    bodyColor: '#1572B6',
-    textColor: '#ffffff',
-    text: <Image src={cssLogo} alt='css' width={27} height={27} />,
-    material: 'plastic',
-    position: [0.1, 0.5, -0.4],
-  },
-  {
-    bodyColor: '#68217A',
-    textColor: '#ffffff',
-    text: <Image src={cSharpLogo} alt='c sharp' width={30} height={30} />,
-    material: 'plastic',
-    position: [0.15, 0.5, -0.4],
-  },
-  {
-    bodyColor: '#FFD34E',
+    bodyColor: '#f2f7fd',
     textColor: '#fff',
-    text: <Image src={jsLogo} alt='js' width={30} height={30} />,
-    material: 'metal',
-    position: [0.2, 0.3, -0.45],
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={reactLogo}
+        alt='react'
+        width={27}
+        height={27}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0],
+  },
+  {
+    bodyColor: '#000000',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={nextJSLogo}
+        alt='nextjs'
+        width={27}
+        height={27}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0],
+  },
+  {
+    bodyColor: '#5fa04e',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={nodeJSLogo}
+        alt='node'
+        width={27}
+        height={27}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0],
   },
   {
     bodyColor: '#007acc',
     textColor: '#ffffff',
-    text: <Image src={typescriptLogo} alt='ts' width={30} height={30} />,
-    material: 'plastic',
-    position: [0.3, 0.3, -0.45],
-  },
-  {
-    bodyColor: '#DD0031', // Angular red
-    textColor: '#ffffff',
     text: (
       <Image
-        src={angularLogo}
-        alt='angular'
-        width={40}
-        height={40}
-        className='keycap-icon'
+        className='rounded-1 pointer-events-none'
+        src={typescriptLogo}
+        alt='ts'
+        width={24}
+        height={24}
       />
     ),
     material: 'plastic',
+    position: [-0.02, 0.7, 0],
+  },
+  {
+    bodyColor: '#FFD34E',
+    textColor: '#000000',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={viemLogo}
+        alt='viem'
+        width={28}
+        height={28}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0],
+  },
+  {
+    bodyColor: '#fff',
+    textColor: '#000000',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={socketLogo}
+        alt='socket'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0],
+  },
+  {
+    bodyColor: '#FF6C37',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={redisLogo}
+        alt='redis'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.07, 0.7, 0],
+  },
+  {
+    bodyColor: '#bd34fe',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={vitejsLogo}
+        alt='vitejs'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.07, 0.7, 0.01],
   },
 
-  // {
-  //   bodyColor: '#61DAFB', // React cyan
-  //   textColor: '#000000',
-  //   text: (
-  //     <Image
-  //       src={reactLogo}
-  //       alt='react'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#000000', // Next.js black
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-white p-1'>
-  //       <Image src={nextJSLogo} alt='nextjs' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#06B6D4', // Tailwind cyan
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={tailwindLogo}
-  //       alt='tailwind'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#0494C4', // Three blue
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-[#200e2d] p-2'>
-  //       <Image src={threeLogo} alt='three' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#E30613', // Framer red
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-yellow-300 p-1'>
-  //       <Image src={framerMotionLogo} alt='framer' width={30} height={30} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
+  // row 2
+  {
+    bodyColor: '#06B6D4',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={postgreSqlLogo}
+        alt='postgresql'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0.05],
+  },
+  {
+    bodyColor: '#F34F29',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={gitLogo}
+        alt='git'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0.01],
+  },
+  {
+    bodyColor: '#E434AA',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={grahqlLogo}
+        alt='graphql'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [0, 0.7, 0.01],
+  },
+  {
+    bodyColor: '#d0d0d0',
+    textColor: '#fff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={expressJSLogo}
+        alt='express'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#000000',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none rounded-[3.5px] select-none'
+        src={wagmiLogo}
+        alt='wagmi'
+        width={30}
+        height={30}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.06, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#47A248',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={mongoDBLogo}
+        alt='mongodb'
+        width={26}
+        height={26}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#fff',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={sqlServerLogo}
+        alt='sql server'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#0494C4',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={dockerLogo}
+        alt='docker'
+        width={28}
+        height={28}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.08, 0.7, 0.02],
+  },
 
-  // {
-  //   bodyColor: '#311C87', // Apollo purple
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={apolloClientLogo}
-  //       alt='apollo'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon rounded-md'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#E10098', // GraphQL pink
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-neutral-900 p-1'>
-  //       <Image src={grahqlLogo} alt='graphql' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#000000', // Wagmi black
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={wagmiLogo}
-  //       alt='wagmi'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#FFD34E', // Viem yellow
-  //   textColor: '#000000',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-neutral-900 p-1'>
-  //       <Image src={viemLogo} alt='viem' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#339933', // Node.js green
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={nodeJSLogo}
-  //       alt='node'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#512BD4', // .NET purple
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={dotnetLogo}
-  //       alt='dotnet'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
+  // row 3
+  {
+    bodyColor: '#A2CB8B',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={vitestLogo}
+        alt='vitest'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#fff',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={framerMotionLogo}
+        alt='framer'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [0.02, 0.7, 0.06],
+  },
+  {
+    bodyColor: '#2A0E61',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={apolloLogo}
+        alt='apollo'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [0, 0.7, 0],
+  },
+  {
+    bodyColor: '#68217A',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={figmaLogo}
+        alt='figma'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.02, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#38bdf8',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={tailwindLogo}
+        alt='tailwind'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.03, 0.7, 0.02],
+  },
+  {
+    bodyColor: '#f37036',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={postmanLogo}
+        alt='postman'
+        width={24}
+        height={24}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.06, 0.7, 0.05],
+  },
+  {
+    bodyColor: '#2535A0',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='rounded-0.5 pointer-events-none'
+        src={ethersLogo}
+        alt='ethers'
+        width={31}
+        height={31}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.09, 0.7, 0.05],
+  },
+  {
+    bodyColor: '#fff',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={threeLogo}
+        alt='three'
+        width={26}
+        height={26}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.04, 0.7, 0.03],
+  },
 
-  // {
-  //   bodyColor: '#47A248', // MongoDB green
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={mongoDBLogo}
-  //       alt='mongodb'
-  //       width={30}
-  //       height={30}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#CC2927', // SQL Server red
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-white p-1'>
-  //       <Image src={sqlServerLogo} alt='sql server' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#336791', // PostgreSQL blue
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-white p-1'>
-  //       <Image src={postgreSqlLogo} alt='postgresql' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#DC382D', // Redis red
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-neutral-800 p-1'>
-  //       <Image src={redisLogo} alt='redis' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#2535A0', // Ethers blue
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={ethersLogo}
-  //       alt='ethers'
-  //       width={40}
-  //       height={40}
-  //       className='keycap-icon rounded-md'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-
-  // {
-  //   bodyColor: '#2496ED', // Docker blue
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <div className='flex items-center justify-center rounded-md bg-white p-1'>
-  //       <Image src={dockerLogo} alt='docker' width={35} height={35} />
-  //     </div>
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#F24E1E', // Figma orange
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={figmaLogo}
-  //       alt='figma'
-  //       width={30}
-  //       height={30}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#F05032', // Git orange-red
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={gitLogo}
-  //       alt='git'
-  //       width={35}
-  //       height={35}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
-  // {
-  //   bodyColor: '#FF6C37', // Postman orange
-  //   textColor: '#ffffff',
-  //   text: (
-  //     <Image
-  //       src={postmanLogo}
-  //       alt='postman'
-  //       width={35}
-  //       height={35}
-  //       className='keycap-icon'
-  //     />
-  //   ),
-  //   material: 'plastic',
-  // },
+  // row 3
+  {
+    bodyColor: '#000',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={vercelLogo}
+        alt='vercel'
+        width={20}
+        height={20}
+      />
+    ),
+    material: 'plastic',
+    position: [0, 0.6, -0.05],
+  },
+  {
+    bodyColor: '#1572B6',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={cssLogo}
+        alt='css'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [0, 0.6, 0],
+  },
+  {
+    bodyColor: '#FFD34E',
+    textColor: '#fff',
+    text: (
+      <Image
+        className='rounded-1 pointer-events-none'
+        src={jsLogo}
+        alt='js'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'metal',
+    position: [-0.01, 0.6, -0.01],
+  },
+  {
+    bodyColor: '#E44D26',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={htmlLogo}
+        alt='html'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.01, 0.6, 0],
+  },
+  {
+    bodyColor: '#68217A',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={cSharpLogo}
+        alt='c sharp'
+        width={23}
+        height={23}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.04, 0.7, 0.06],
+  },
+  {
+    bodyColor: '#c4473a',
+    textColor: '#ffffff',
+    text: (
+      <Image
+        className='pointer-events-none select-none'
+        src={angularLogo}
+        alt='angular'
+        width={22}
+        height={22}
+      />
+    ),
+    material: 'plastic',
+    position: [-0.04, 0.7, 0.06],
+  },
 ]
 
 type TKeyboardProps = {
@@ -341,7 +525,7 @@ const KeyboardModel: FC<TKeyboardProps> = ({
       </mesh>
 
       {/* Keyboard frame */}
-      <mesh position={[0, -0.5, 0]} receiveShadow>
+      <mesh position={[0, -0.2, 0]} receiveShadow>
         <boxGeometry
           args={[columns * spacing + 0.4, 0.2, rows * spacing + 0.4]}
         />
@@ -396,8 +580,8 @@ export const SkillKeyboard = () => {
 
         <KeyboardModel
           columns={8}
-          spacing={1.2}
-          keySize={[1.2, 0.5, 1.2]}
+          spacing={1}
+          keySize={[1, 0.6, 1]}
           keyRadius={0.1}
           position={[0, 0.8, 0]}
         />
