@@ -1,8 +1,15 @@
 'use client'
 
+import {
+  ANOTHER_SKILL,
+  BE_SKILL_DATA,
+  FE_SKILL_DATA,
+  LANGUAGES_SKILL,
+} from '@/constants'
 import { slideInFromTop } from '@/utils/motion'
 import { SparkleIcon } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
+import { SkillDataProvider } from '../ui/SkillDataProvider'
 import { SkillKeyboard } from '../ui/SkillKeyBoard'
 
 const Skill = () => {
@@ -22,7 +29,61 @@ const Skill = () => {
           </h1>
         </motion.div>
 
-        <SkillKeyboard />
+        <SkillKeyboard className='hidden md:flex' />
+
+        <div className='center size-full flex-col gap-6 md:hidden'>
+          <div className='z-50 flex flex-wrap items-center justify-around gap-6'>
+            {LANGUAGES_SKILL.map((skill, index) => (
+              <SkillDataProvider
+                name={skill.name}
+                key={skill.name}
+                icon={skill.icon}
+                index={index}
+              />
+            ))}
+          </div>
+          <div className='z-50 flex flex-wrap items-center justify-around gap-6'>
+            {FE_SKILL_DATA.map((skill, index) => (
+              <SkillDataProvider
+                name={skill.name}
+                key={skill.name}
+                icon={skill.icon}
+                index={index}
+              />
+            ))}
+          </div>
+          <div className='z-50 flex flex-wrap items-center justify-around gap-6'>
+            {BE_SKILL_DATA.map((skill, index) => (
+              <SkillDataProvider
+                name={skill.name}
+                key={skill.name}
+                icon={skill.icon}
+                index={index}
+              />
+            ))}
+          </div>
+          <div className='z-50 flex flex-wrap items-center justify-around gap-6'>
+            {ANOTHER_SKILL.map((skill, index) => (
+              <SkillDataProvider
+                name={skill.name}
+                key={skill.name}
+                icon={skill.icon}
+                index={index}
+              />
+            ))}
+          </div>
+          <div className='absolute -top-10 -z-10 flex h-auto w-[1200px] items-center justify-center bg-cover'>
+            <video
+              className='size-full object-center opacity-30'
+              preload='false'
+              playsInline
+              loop
+              muted
+              autoPlay
+              src='/cards-video.webm'
+            />
+          </div>
+        </div>
       </div>
     </section>
   )
