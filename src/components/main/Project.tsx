@@ -1,4 +1,5 @@
 import { ngooProject, weatherProject } from '@/assets/images'
+import Link from 'next/link'
 import ProjectCard from '../ui/ProjectCard'
 
 const Project = () => {
@@ -16,8 +17,7 @@ const Project = () => {
             src={ngooProject.src}
             title='NgOo Coffee Website'
             role='Fullstack'
-            github='https://github.com/ThanhNguyen03/ngoo-cf-2025'
-            website='https://ngoo-cf-2025.vercel.app/'
+            website='https://ngoo-cf.vercel.app/'
             description='A 3D-animated, real-time food ordering website with friendly UX.
                 Implement multi-authentication, multi-payment integrations with
                 high secure service.'
@@ -28,7 +28,13 @@ const Project = () => {
                 high secure service.
                 <br />
                 <br />
-                <strong>Front End:</strong>
+                <strong>Front End:</strong>{' '}
+                <Link
+                  href='https://github.com/ThanhNguyen03/ngoo-cf-2025'
+                  className='font-small-caps text-16 rounded-2 bg-white px-2 py-1 font-semibold text-blue-700'
+                >
+                  Github
+                </Link>
                 <ul className='list-outside list-disc pl-5'>
                   <li>
                     Implement micro-interactions with Framer Motion and 3D
@@ -45,7 +51,13 @@ const Project = () => {
                   </li>
                 </ul>
                 <br />
-                <strong>Back End:</strong>
+                <strong>Back End:</strong>{' '}
+                <Link
+                  href='https://github.com/ThanhNguyen03/ngoo-cf-2025'
+                  className='font-small-caps text-16 rounded-2 bg-white px-2 py-1 font-semibold text-blue-700'
+                >
+                  Github
+                </Link>
                 <ul className='list-outside list-disc pl-5'>
                   <li>
                     Secure Authentication by built-in puredly JWT-based auth
@@ -63,6 +75,7 @@ const Project = () => {
                     resources.
                   </li>
                 </ul>
+                <br />
               </>
             }
           />

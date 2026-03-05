@@ -20,9 +20,14 @@ export type TKeycapTheme = {
   text?: string | ReactNode
   /** Material type - 'plastic' or 'glass' */
   material?: 'plastic' | 'glass' | 'metal'
+  /** Optional icon position */
   position?: [number, number, number]
   /** Optional URL to open when clicked */
   url?: string
+  /** Optional name of keycap */
+  name?: string
+  /** Optional description of keycap */
+  description?: string
 }
 
 type TKeycapProps = {
@@ -35,11 +40,11 @@ type TKeycapProps = {
   /** Border radius */
   radius?: number
   /** Callback when key is pressed */
-  onPress?: () => void
+  onPress?: (theme: TKeycapTheme) => void
   /** Callback when key is released */
   onRelease?: () => void
-  /** Custom className for HTML content */
-  className?: string
+  /** Custom renderOrther for keycap */
+  renderOrder?: number
 }
 
 export const Keycap: FC<TKeycapProps> = ({
@@ -49,6 +54,7 @@ export const Keycap: FC<TKeycapProps> = ({
   radius = 0.05,
   onPress,
   onRelease,
+  renderOrder,
 }) => {
   const [isPressed, setIsPressed] = useState<boolean>(false)
   const groupRef = useRef<THREE.Group>(null)
@@ -60,7 +66,7 @@ export const Keycap: FC<TKeycapProps> = ({
       return
     }
 
-    const target = isPressed ? -0.1 : 0
+    const target = isPressed ? -0.15 : 0
     const stiffness = 300
     const damping = 20
     const mass = 1
@@ -81,9 +87,9 @@ export const Keycap: FC<TKeycapProps> = ({
     }
   })
 
-  const handlePointerDown = () => {
+  const handlePointerDown = (theme: TKeycapTheme) => {
     setIsPressed(true)
-    onPress?.()
+    onPress?.(theme)
   }
 
   const handlePointerUp = () => {
@@ -98,14 +104,14 @@ export const Keycap: FC<TKeycapProps> = ({
   }
 
   return (
-    <group position={position}>
+    <group position={position} renderOrder={renderOrder}>
       {/* Moving keycap */}
       <group ref={groupRef}>
         <KeycapBody
           theme={theme}
           size={size}
           radius={radius}
-          onPointerDown={handlePointerDown}
+          onPointerDown={() => handlePointerDown(theme)}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
         />

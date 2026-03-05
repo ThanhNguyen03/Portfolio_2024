@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import Hero from '@/components/main/Hero'
 import Project from '@/components/main/Project'
-import { SkillKeyboard } from '@/components/main/SkillKeyBoard'
+import Skill from '@/components/main/Skill'
 import StarCanvas from '@/components/main/StarBackground'
 import { cn } from '@/utils/cn'
 import { useState } from 'react'
@@ -34,7 +34,7 @@ export default function Home() {
         />
         {isVideoEnded && (
           <>
-            <SkillKeyboard />
+            <Skill />
             <Project />
           </>
         )}

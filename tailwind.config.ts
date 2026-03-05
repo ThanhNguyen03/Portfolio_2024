@@ -93,6 +93,18 @@ const config: Config = {
         69: ['4.3125rem', { lineHeight: '5.0625rem' }],
         92: ['5.75rem', { lineHeight: '6.75rem' }],
       },
+      textShadow: {
+        'stroke-1':
+          '1px 1px 0 rgba(9,9,11,0.7), -1px 1px 0 rgba(9,9,11,0.7), 1px -1px 0 rgba(9,9,11,0.7), -1px -1px 0 rgba(9,9,11,0.7), 0px 1px 0 rgba(9,9,11,0.7), 0px -1px 0 rgba(9,9,11,0.7), 1px 0px 0 rgba(9,9,11,0.7), -1px 0px 0 rgba(9,9,11,0.7), 0px 6px 0px rgba(9,9,11,0.7)',
+        'stroke-2':
+          '2px 2px 0 rgba(9,9,11,0.7), -2px 2px 0 rgba(9,9,11,0.7), 2px -2px 0 rgba(9,9,11,0.7), -2px -2px 0 rgba(9,9,11,0.7), 0px 2px 0 rgba(9,9,11,0.7), 0px -2px 0 rgba(9,9,11,0.7), 2px 0px 0 rgba(9,9,11,0.7), -2px 0px 0 rgba(9,9,11,0.7), 0px 6px 0px rgba(9,9,11,0.7), 1.5px 6px 0px rgba(9,9,11,0.7), -1.5px 6px 0px rgba(9,9,11,0.7)',
+        'stroke-white-1':
+          '1px 1px 0 #FFF, -1px 1px 0 #FFF, 1px -1px 0 #FFF, -1px -1px 0 #FFF, 0px 1px 0 #FFF, 0px -1px 0 #FFF, 1px 0px 0 #FFF, -1px 0px 0 #FFF, 0px 2px 0px rgba(9,9,11,0.3)',
+        'stroke-white-2':
+          '2px 2px 0 #FFF, -2px 2px 0 #FFF, 2px -2px 0 #FFF, -2px -2px 0 #FFF, 0px 2px 0 #FFF, 0px -2px 0 #FFF, 2px 0px 0 #FFF, -2px 0px 0 #FFF, 0px 4px 0px rgba(9,9,11,0.3), 1.5px 4px 0px rgba(9,9,11,0.3), -1.5px 4px 0px rgba(9,9,11,0.3)',
+        'stroke-white-3':
+          '2.5px 2.5px 0 #FFF, -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF, -2.5px -2.5px 0 #FFF, 0px 3px 0 #FFF, 0px -3px 0 #FFF, 3px 0px 0 #FFF, -2.5px 0px 0 #FFF, 0px 6px 0px rgba(9,9,11,0.3), 2px 6px 1px rgba(9,9,11,0.3), -2px 6px 1px rgba(9,9,11,0.3)',
+      },
     },
   },
   plugins: [],

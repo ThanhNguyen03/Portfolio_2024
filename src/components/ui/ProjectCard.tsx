@@ -9,7 +9,7 @@ type TProjectCardProps = {
   role: string
   description: string
   detailDescription?: string | React.ReactNode
-  github: string
+  github?: string
   website: string
 }
 
@@ -72,12 +72,14 @@ const ProjectCard: FC<TProjectCardProps> = ({
 
         {/* BUTTONS */}
         <motion.div layout className='flex items-center gap-4'>
-          <Link
-            href={github}
-            className='font-small-caps text-16 rounded-full border border-white/10 bg-linear-to-r from-[#202328] to-[#202328] px-6 py-2 font-semibold duration-500 hover:from-violet-500'
-          >
-            Github
-          </Link>
+          {github && (
+            <Link
+              href={github}
+              className='font-small-caps text-16 rounded-full border border-white/10 bg-linear-to-r from-[#202328] to-[#202328] px-6 py-2 font-semibold duration-500 hover:from-violet-500'
+            >
+              Github
+            </Link>
+          )}
           <Link
             href={website}
             className='font-small-caps text-16 from-secondary-600 to-secondary-600 rounded-full border border-white/10 bg-linear-to-r px-6 py-2 font-semibold duration-500 hover:to-violet-500'
