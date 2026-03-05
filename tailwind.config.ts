@@ -104,6 +104,10 @@ const config: Config = {
           '2px 2px 0 #FFF, -2px 2px 0 #FFF, 2px -2px 0 #FFF, -2px -2px 0 #FFF, 0px 2px 0 #FFF, 0px -2px 0 #FFF, 2px 0px 0 #FFF, -2px 0px 0 #FFF, 0px 4px 0px rgba(9,9,11,0.3), 1.5px 4px 0px rgba(9,9,11,0.3), -1.5px 4px 0px rgba(9,9,11,0.3)',
         'stroke-white-3':
           '2.5px 2.5px 0 #FFF, -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF, -2.5px -2.5px 0 #FFF, 0px 3px 0 #FFF, 0px -3px 0 #FFF, 3px 0px 0 #FFF, -2.5px 0px 0 #FFF, 0px 6px 0px rgba(9,9,11,0.3), 2px 6px 1px rgba(9,9,11,0.3), -2px 6px 1px rgba(9,9,11,0.3)',
+        'stroke-gray-1':
+          '1px 1px 0 #636363, -1px 1px 0 #636363, 1px -1px 0 #636363, -1px -1px 0 #636363, 0px 1px 0 #636363, 0px -1px 0 #636363, 1px 0px 0 #636363, -1px 0px 0 #636363, 0px 2px 0px rgba(9,9,11,0.3)',
+        'stroke-gray-2':
+          '2px 2px 0 #636363, -2px 2px 0 #636363, 2px -2px 0 #636363, -2px -2px 0 #636363, 0px 2px 0 #636363, 0px -2px 0 #636363, 2px 0px 0 #636363, -2px 0px 0 #636363, 0px 4px 0px rgba(9,9,11,0.3), 1.5px 4px 0px rgba(9,9,11,0.3), -1.5px 4px 0px rgba(9,9,11,0.3)',
       },
     },
   },

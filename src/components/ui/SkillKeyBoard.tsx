@@ -681,6 +681,7 @@ export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
     !!clickedKey,
     3,
   )
+  const LIST_WHITE_TEXT = ['#d0d0d0', '#fff', '#f2f7fd']
 
   return (
     <div
@@ -692,7 +693,12 @@ export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
       <div className='absolute top-0 mr-15 flex size-full max-w-[500px] -rotate-26 skew-[2.5deg] flex-col text-white'>
         <div className='flex flex-col items-start gap-2'>
           <h3
-            className='text-23 text-shadow-stroke-white-2 size-full font-bold'
+            className={cn(
+              'text-23 size-full font-bold',
+              clickedKey && LIST_WHITE_TEXT.includes(clickedKey.bodyColor)
+                ? 'text-shadow-stroke-gray-2'
+                : 'text-shadow-stroke-white-2',
+            )}
             style={{
               color: `${clickedKey?.bodyColor}`,
             }}

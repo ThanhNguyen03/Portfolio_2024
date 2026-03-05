@@ -4,6 +4,7 @@ import {
   slideInFromRight,
   slideInFromTop,
 } from '@/utils/motion'
+import { DownloadSimpleIcon } from '@phosphor-icons/react'
 import { SparkleIcon } from '@phosphor-icons/react/dist/ssr'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -78,13 +79,16 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
             blockchain ecosystems
           </motion.p>
           <motion.a
-            className='bg-[linear-gradient(180deg,rgba(48,144,241,0)0%,rgba(81,178,219,0.32)100%), rgba(47,68,255,0.12)] hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)0%,rgba(60,8,126,0.42)100%), rgba(113,47,255,0.24)] hover:text-primary-300 max-w-[200px] cursor-pointer rounded-lg border border-white/30 px-8 py-2 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 will-change-transform hover:shadow-[inset_0_0_12px_#bf97ff70]'
-            href='#skills'
+            className='hover:text-primary-300 center max-w-[200px] cursor-pointer gap-2 rounded-lg border border-white/30 bg-[linear-gradient(180deg,rgba(48,144,241,0)_0%,rgba(81,178,219,0.32)_100%),rgba(47,68,255,0.12)] px-8 py-2 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 will-change-transform hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)_0%,rgba(60,8,126,0.42)_100%),rgba(113,47,255,0.24)] hover:shadow-[inset_0_0_12px_#bf97ff70]'
             variants={slideInFromLeft(2)}
             initial='hidden'
             animate={isInitVideoEnded ? 'visible' : 'hidden'}
+            href='/CV_Thanh_Nguyen.pdf'
+            download
+            target='_blank'
           >
-            Learn more!
+            <DownloadSimpleIcon size={20} />
+            Download CV
           </motion.a>
         </div>
         <motion.div
