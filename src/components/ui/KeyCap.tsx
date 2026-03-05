@@ -196,6 +196,12 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
     document.body.style.cursor = 'auto'
   }
 
+  useLayoutEffect(() => {
+    return () => {
+      document.body.style.cursor = 'auto'
+    }
+  }, [])
+
   const commonProps = {
     ref: meshRef,
     args: [width, height, depth] as [number, number, number],
@@ -250,6 +256,7 @@ const KeycapLegend: FC<TKeycapLegendProps> = ({ theme }) => {
         center
         transform
         rotation={[-Math.PI / 2, 0, 0]}
+        pointerEvents='none'
       >
         {theme.text}
       </Html>

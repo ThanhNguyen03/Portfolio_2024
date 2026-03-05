@@ -240,7 +240,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
                     className={cn(
                       'text-18! group font-small-caps relative flex size-full items-center gap-2 px-4 text-white/50 transition-all duration-300',
                       'hover:font-bold hover:text-white',
-                      activeIndex === i && 'text-secondary-300 font-bold',
+                      activeIndex === i && 'font-bold text-pink-400',
                     )}
                   >
                     {link.icon}
