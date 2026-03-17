@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr'
 import { FC, useEffect, useRef } from 'react'
 import HeroContent from '../ui/HeroContent'
 
@@ -28,7 +29,7 @@ const Hero: FC<THeroProps> = ({ setIsVideoEnded, isInitVideoEnded }) => {
   }, [])
 
   return (
-    <section id='about-me' className='relative flex w-full flex-col'>
+    <section className='relative flex w-full flex-col'>
       {!isInitVideoEnded ? (
         <>
           <video
@@ -40,6 +41,14 @@ const Hero: FC<THeroProps> = ({ setIsVideoEnded, isInitVideoEnded }) => {
           >
             <source src='/vid_whole.mp4' type='video/mp4' />
           </video>
+          {/* Skip Intro */}
+          <button
+            onClick={() => setIsVideoEnded(true)}
+            className='center fixed right-8 bottom-8 z-50 cursor-pointer gap-2 rounded-full border border-white/20 bg-black/40 px-5 py-2.5 text-sm font-medium text-white/70 backdrop-blur-sm transition duration-300 hover:border-white/40 hover:text-white'
+          >
+            Skip Intro
+            <ArrowRightIcon size={14} />
+          </button>
         </>
       ) : null}
       {isInitVideoEnded && (

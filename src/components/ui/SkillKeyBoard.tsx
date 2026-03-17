@@ -103,25 +103,31 @@ export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'center relative z-100 h-[560px] w-full max-w-[800px]',
+        'center relative z-50 h-[560px] w-full max-w-[800px]',
         className,
       )}
     >
       <div className='absolute top-0 mr-15 flex size-full max-w-[500px] -rotate-26 skew-[2.5deg] flex-col text-white'>
         <div className='flex flex-col items-start gap-2'>
-          <h3
-            className={cn(
-              'text-23 size-full font-bold',
-              clickedKey && LIST_WHITE_TEXT.includes(clickedKey.bodyColor)
-                ? 'text-shadow-stroke-gray-2'
-                : 'text-shadow-stroke-white-2',
-            )}
-            style={{
-              color: `${clickedKey?.bodyColor}`,
-            }}
-          >
-            {clickedKey?.name}
-          </h3>
+          {clickedKey ? (
+            <h3
+              className={cn(
+                'text-23 size-full font-bold',
+                LIST_WHITE_TEXT.includes(clickedKey.bodyColor)
+                  ? 'text-shadow-stroke-gray-2'
+                  : 'text-shadow-stroke-white-2',
+              )}
+              style={{
+                color: `${clickedKey.bodyColor}`,
+              }}
+            >
+              {clickedKey.name}
+            </h3>
+          ) : (
+            <p className='text-23 size-full font-semibold'>
+              Hold a keycap for details
+            </p>
+          )}
           <p className='text-14 min-h-30 leading-[160%]'>
             <span>{displayText}</span>
             {isTyping && (

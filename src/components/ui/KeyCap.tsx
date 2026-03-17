@@ -115,7 +115,7 @@ export const Keycap: FC<TKeycapProps> = ({
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
         />
-        <KeycapLegend theme={theme} />
+        <KeycapLegend theme={theme} size={size} />
       </group>
 
       {/* Switch housing */}
@@ -252,13 +252,21 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
 
 type TKeycapLegendProps = {
   theme: TKeycapTheme
+  size: [number, number, number]
 }
 
-const KeycapLegend: FC<TKeycapLegendProps> = ({ theme }) => {
+const KeycapLegend: FC<TKeycapLegendProps> = ({ theme, size }) => {
+  // Pin icon Y to the keycap top face height so icon always aligns with the
+  // keycap surface regardless of viewport/aspect-ratio (eliminates parallax
+  // that occurs when icon Y differs from mesh face Y under angled camera).
+  // Center icon on keycap face. X/Z are zeroed so the icon sits exactly at
+  // the keycap center regardless of the legacy calibration offsets in theme.
+  const iconPos: [number, number, number] = [0, size[1] + 0.01, 0]
+
   if (typeof theme.text !== 'string') {
     return (
       <Html
-        position={theme.position || [0, 0, 0]}
+        position={iconPos}
         center
         transform
         rotation={[-Math.PI / 2, 0, 0]}
@@ -272,7 +280,7 @@ const KeycapLegend: FC<TKeycapLegendProps> = ({ theme }) => {
   // Default text
   return (
     <Text
-      position={theme.position || [0, 0, 0]}
+      position={iconPos}
       rotation={[-Math.PI / 2, 0, 0]}
       color={theme.textColor}
       anchorX='center'

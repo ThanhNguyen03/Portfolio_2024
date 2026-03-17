@@ -37,6 +37,7 @@ import type { TKeycapTheme } from '@/components/ui/KeyCap'
 import {
   CodesandboxLogoIcon,
   DevToLogoIcon,
+  EnvelopeSimpleIcon,
   RocketLaunchIcon,
 } from '@phosphor-icons/react/dist/ssr'
 import Image, { StaticImageData } from 'next/image'
@@ -99,6 +100,17 @@ export const HEADER_NAVIGATION = [
       />
     ),
     label: 'Projects',
+  },
+  {
+    id: 'contact',
+    icon: (
+      <EnvelopeSimpleIcon
+        weight='fill'
+        className='size-7 group-data-[active=true]:text-cyan-400 md:size-6'
+        size={24}
+      />
+    ),
+    label: 'Contact',
   },
 ]
 export const LIST_FOOTER_NAVIGATION: Array<
@@ -364,6 +376,99 @@ export const ANOTHER_SKILL: TSkill[] = [
     width: 70,
     height: 70,
   },
+]
+
+export type TFeatureHighlight = {
+  title: string
+  description: string
+  tags: string[]
+  iconName:
+    | 'currency'
+    | 'lightning'
+    | 'shield'
+    | 'lock'
+    | 'gauge'
+    | 'cube'
+    | 'code'
+    | 'activity'
+}
+
+export const NGOO_SYSTEM_FEATURES: TFeatureHighlight[] = [
+  {
+    iconName: 'currency',
+    title: 'Multi-Payment System',
+    description:
+      'PayPal webhooks with queue + retry, Cash on Delivery, and on-chain crypto payments via ECDSA signature verification.',
+    tags: ['PayPal', 'Socket.IO', 'Solidity'],
+  },
+  {
+    iconName: 'lightning',
+    title: 'Real-Time Orders',
+    description:
+      'Socket.IO bidirectional communication for live order status updates with room-based messaging and reconnect replay.',
+    tags: ['Socket.IO', 'Node.js', 'Redis'],
+  },
+  {
+    iconName: 'shield',
+    title: 'On-Chain ECDSA Verification',
+    description:
+      'Smart contract with nonce replay protection, ReentrancyGuard, Pausable, and deadline expiry on Ethereum Sepolia.',
+    tags: ['Solidity', 'OpenZeppelin', 'Hardhat'],
+  },
+  {
+    iconName: 'lock',
+    title: 'JWT Security Architecture',
+    description:
+      'Refresh token rotation with reuse detection, Redis allowlist for token revocation, and device-bound sessions.',
+    tags: ['JWT', 'Redis', 'argon2'],
+  },
+  {
+    iconName: 'gauge',
+    title: 'Performance at Scale',
+    description:
+      'Cursor-based pagination O(log N), Redis distributed locking via Lua scripts, version-based cache invalidation.',
+    tags: ['Redis', 'MongoDB', 'GraphQL'],
+  },
+  {
+    iconName: 'cube',
+    title: '3D Interactive UI',
+    description:
+      'Spring-physics keycap animations, WebGL star field with 5000 points, Framer Motion micro-interactions.',
+    tags: ['Three.js', 'Framer Motion', 'R3F'],
+  },
+]
+
+export const NGOO_TECH_STACK = [
+  'Next.js 15',
+  'React 19',
+  'TypeScript',
+  'Tailwind CSS',
+  'Framer Motion',
+  'Three.js',
+  'Zustand',
+  'Apollo Client',
+  'Wagmi',
+  'Viem',
+  'Node.js 22',
+  'Apollo Server',
+  'Express',
+  'GraphQL',
+  'MongoDB',
+  'Redis',
+  'Socket.IO',
+  'JWT',
+  'Solidity',
+  'Hardhat',
+  'OpenZeppelin',
+  'ethers.js',
+  'Docker',
+]
+
+export const ABOUT_STATS = [
+  { value: '2+', label: 'Years Experience' },
+  { value: '3', label: 'Full-Stack Projects' },
+  { value: '30+', label: 'Technologies' },
+  { value: '3', label: 'Security Audits' },
 ]
 
 // List of themes for the keyboard

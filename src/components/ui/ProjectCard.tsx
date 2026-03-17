@@ -11,6 +11,7 @@ type TProjectCardProps = {
   detailDescription?: string | React.ReactNode
   github?: string
   website: string
+  techStack?: string[]
 }
 
 const ProjectCard: FC<TProjectCardProps> = ({
@@ -21,6 +22,7 @@ const ProjectCard: FC<TProjectCardProps> = ({
   github,
   website,
   role,
+  techStack,
 }) => {
   const [showMore, setShowMore] = useState(false)
 
@@ -68,6 +70,20 @@ const ProjectCard: FC<TProjectCardProps> = ({
           >
             {showMore ? 'Less' : 'More'}
           </span>
+
+          {/* TECH STACK PILLS */}
+          {techStack && techStack.length > 0 && (
+            <div className='mt-2 flex flex-wrap gap-1.5'>
+              {techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className='rounded-full border border-violet-700/50 bg-violet-900/30 px-2 py-0.5 text-[11px] font-medium text-violet-300'
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* BUTTONS */}

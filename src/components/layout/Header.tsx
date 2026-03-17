@@ -18,6 +18,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
   const [openMobile, setOpenMobile] = useState<boolean>(false)
 
   const [activeIndex, setActiveIndex] = useState<number>(0)
+  const activeIndexRef = useRef<number>(0)
   const [targetIndex, setTargetIndex] = useState<number | null>(null)
   const [itemPositions, setItemPositions] = useState<
     { left: number; width: number }[]
@@ -94,6 +95,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
 
     stepTimerRef.current = window.setInterval(() => {
       current = current + direction
+      activeIndexRef.current = current
       setActiveIndex(current)
       if (current === to) {
         clearStepTimer()
@@ -179,8 +181,9 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
           break
         }
       }
-      if (found !== -1 && found !== activeIndex) {
-        // if user scrolls manually, jump desired -> found and animate step-by-step from current to found
+      // Use the ref so this listener never needs to re-register on activeIndex
+      // changes, which previously caused an infinite setState loop.
+      if (found !== -1 && found !== activeIndexRef.current) {
         setTargetIndex(found)
       }
     }
@@ -188,7 +191,8 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [activeIndex])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // cleanup timers on unmount
   useEffect(() => {
@@ -208,7 +212,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
   }, [openMobile])
 
   return (
-    <header className='bg-black-700/10 fixed top-0 z-70 w-full shadow-lg shadow-[rgb(42,14,97,0.5)] backdrop-blur-md'>
+    <header className='bg-black-700/10 fixed top-0 z-999 w-full shadow-lg shadow-[rgb(42,14,97,0.5)] backdrop-blur-md'>
       {isInitVideoEnded && (
         <motion.div
           variants={slideInFromTop}
@@ -223,7 +227,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
             <div className='absolute left-1/2 hidden h-full -translate-x-1/2 items-center justify-center py-2 md:flex'>
               <nav
                 ref={navWrapperRef}
-                className='relative flex h-full w-fit items-center justify-center gap-6 rounded-full border border-[#7042f861] bg-violet-300/10 p-1 md:gap-10'
+                className='relative flex h-full w-fit items-center justify-center gap-1 rounded-full border border-[#7042f861] bg-violet-300/10 p-1 md:gap-1 lg:gap-2'
               >
                 {HEADER_NAVIGATION.map((link, i) => (
                   <Link
@@ -238,7 +242,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
                       handleClickNavigation(i)
                     }}
                     className={cn(
-                      'text-18! group font-small-caps relative flex size-full items-center gap-2 px-4 text-white/50 transition-all duration-300',
+                      'text-18! group font-small-caps relative flex size-full items-center gap-1.5 px-3 text-white/50 transition-all duration-300 md:px-3 lg:px-4',
                       'hover:font-bold hover:text-white',
                       activeIndex === i && 'font-bold text-pink-400',
                     )}
@@ -263,7 +267,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
               </nav>
             </div>
 
-            <div className='hidden gap-4 md:flex md:gap-6'>
+            <div className='hidden gap-4 lg:flex lg:gap-6'>
               {SOCIAL_NAVIGATION.map((social) => (
                 <Link key={social.name} href={social.href}>
                   <Image

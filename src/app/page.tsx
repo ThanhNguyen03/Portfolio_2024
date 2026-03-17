@@ -2,6 +2,9 @@
 
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
+import ScrollProgress from '@/components/layout/ScrollProgress'
+import AboutMe from '@/components/main/AboutMe'
+import Contact from '@/components/main/Contact'
 import Hero from '@/components/main/Hero'
 import Project from '@/components/main/Project'
 import Skill from '@/components/main/Skill'
@@ -19,12 +22,12 @@ export default function Home() {
       </div>
 
       <StarCanvas />
+      <ScrollProgress />
       <Header isInitVideoEnded={isVideoEnded} />
       <main
         id='main'
         className={cn(
           'flex size-full flex-col gap-20 overflow-x-hidden',
-          isVideoEnded && 'overflow-hidden',
           'max-[425px]:hidden',
         )}
       >
@@ -34,8 +37,10 @@ export default function Home() {
         />
         {isVideoEnded && (
           <>
+            <AboutMe />
             <Skill />
             <Project />
+            <Contact />
           </>
         )}
       </main>

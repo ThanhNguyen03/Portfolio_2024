@@ -4,7 +4,6 @@ import {
   slideInFromRight,
   slideInFromTop,
 } from '@/utils/motion'
-import { DownloadSimpleIcon } from '@phosphor-icons/react'
 import { SparkleIcon } from '@phosphor-icons/react/dist/ssr'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -33,7 +32,7 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
               className='mr-3 size-6 text-pink-500/95 md:size-8'
             />
             <h1 className='text-16 bg-white bg-clip-text font-semibold text-transparent bg-blend-normal md:bg-[linear-gradient(0deg,rgba(255,255,255,0.4),rgba(255,255,255,0.4)),linear-gradient(0deg,rgba(244,97,187,1)_0%,rgba(241,110,83,1)_35%,rgba(135,221,241,0.98)_100%)]'>
-              Full-Stack Developer | Web3 & Blockchain
+              Software Engineer | Web3 & Blockchain Developer
             </h1>
           </motion.div>
           <motion.div
@@ -78,18 +77,6 @@ const HeroContent: FC<THeroContentProps> = ({ isInitVideoEnded }) => {
             <strong className='text-violet-300'>Web3 technologies</strong>, and
             blockchain ecosystems
           </motion.p>
-          <motion.a
-            className='hover:text-primary-300 center max-w-[200px] cursor-pointer gap-2 rounded-lg border border-white/30 bg-[linear-gradient(180deg,rgba(48,144,241,0)_0%,rgba(81,178,219,0.32)_100%),rgba(47,68,255,0.12)] px-8 py-2 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 will-change-transform hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)_0%,rgba(60,8,126,0.42)_100%),rgba(113,47,255,0.24)] hover:shadow-[inset_0_0_12px_#bf97ff70]'
-            variants={slideInFromLeft(2)}
-            initial='hidden'
-            animate={isInitVideoEnded ? 'visible' : 'hidden'}
-            href='/CV_Thanh_Nguyen.pdf'
-            download
-            target='_blank'
-          >
-            <DownloadSimpleIcon size={20} />
-            Download CV
-          </motion.a>
         </div>
         <motion.div
           className='hidden size-full items-center justify-center will-change-transform md:flex'

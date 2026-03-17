@@ -16,7 +16,7 @@ export default function RootLayout({
       <head>
         <link rel='icon' href='/black-hole.png' />
       </head>
-      <body className='font-raleway dark overflow-x-hidden overflow-y-scroll'>
+      <body className='font-raleway dark overflow-x-hidden overflow-y-scroll lining-nums'>
         {children}
       </body>
     </html>
