@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Overview
 
-## Getting Started
+A single-page portfolio website built with Next.js 15 (App Router), React 18, TypeScript, Tailwind CSS 4, Three.js, and Framer Motion. All content is static — no backend or API calls.
 
-First, run the development server:
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn dev        # Start dev server
+yarn build      # Production build
+yarn lint       # ESLint (includes TypeScript + Prettier checks)
+yarn format     # Format with Prettier
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Package manager is **Yarn 4.12.0** (do not use npm).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Single page**: `src/app/page.tsx` is the only route. Navigation uses anchor links (#about-me, #skills, #projects).
+- **Component layers**: `components/layout/` (Header, Footer, MobileHeader), `components/main/` (Hero, Skill, Project, StarBackground), `components/ui/` (reusable pieces like KeyCap, Tooltip, ProjectCard).
+- **3D rendering**: Three.js via `@react-three/fiber` and `@react-three/drei`. Used in `StarBackground.tsx` (animated star field) and `KeyCap.tsx` (interactive 3D keycaps).
+- **Animation**: Framer Motion for section transitions; reusable presets in `utils/motion.ts`. Custom `useTypingAnimation` hook in `hook/typing-animate.ts`. CSS keyframe animations in `globals.css`.
+- **Static data**: All navigation items, skills, and projects defined in `constants/index.tsx`.
+- **Assets**: Icons exported from `assets/icons/index.ts` (36+ tech icons). Images from `assets/images/index.ts`. Videos in `public/`.
+- **Styling**: Tailwind utility classes + `cn()` helper (`utils/cn.ts` — clsx + tailwind-merge). Custom utilities defined via `@utility` in `globals.css`.
+- **Path alias**: `@/*` maps to `./src/*` and `./public/*`.
 
-## Learn More
+## Tailwind Theme
 
-To learn more about Next.js, take a look at the following resources:
+Custom config in `tailwind.config.ts`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Fonts**: Raleway (default), Lobster (display), Shantell Sans, Cedarville Cursive
+- **Colors**: primary (orange), secondary (blue), plus pink-500, blue-700, black-700
+- **Breakpoints**: xs(375), sm(425), md(768), lg(1024), xl(1280), 2xl(1440), 4k(2000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Code Style
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- No semicolons, single quotes, JSX single quotes (Prettier config)
+- Prettier plugins auto-organize imports and sort Tailwind classes
+- ESLint disables `@typescript-eslint/no-explicit-any`
+- No testing framework is set up
