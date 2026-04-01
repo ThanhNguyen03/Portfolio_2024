@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  fadeIn,
-  slideInFromBottom,
-  slideInFromLeft,
-  slideInFromRight,
-} from '@/utils/motion'
+import { fadeIn, slideInFromBottom, slideInFromLeft, slideInFromRight } from '@/utils/motion'
 import { motion, useInView } from 'framer-motion'
 import { ReactNode, useRef } from 'react'
 
@@ -16,12 +11,7 @@ type TScrollRevealProps = {
   className?: string
 }
 
-const ScrollReveal = ({
-  children,
-  direction = 'up',
-  delay = 0,
-  className,
-}: TScrollRevealProps) => {
+const ScrollReveal = ({ children, direction = 'up', delay = 0, className }: TScrollRevealProps) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 

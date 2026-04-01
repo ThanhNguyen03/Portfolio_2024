@@ -10,9 +10,7 @@ const POINTS = 5000
 const StarBackground = () => {
   const ref: any = useRef()
   const [sphere] = useState<Float32Array>(() =>
-    Float32Array.from(
-      random.inSphere(new Float32Array(POINTS * 3), { radius: 1.2 }),
-    ),
+    Float32Array.from(random.inSphere(new Float32Array(POINTS * 3), { radius: 1.2 })),
   )
 
   useFrame((_, delta) => {
@@ -23,13 +21,7 @@ const StarBackground = () => {
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
       <Points ref={ref} positions={sphere} stride={3} frustumCulled>
-        <PointMaterial
-          transparent
-          color={'#fff'}
-          size={0.005}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
+        <PointMaterial transparent color={'#fff'} size={0.005} sizeAttenuation={true} depthWrite={false} />
       </Points>
     </group>
   )

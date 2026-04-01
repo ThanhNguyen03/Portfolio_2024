@@ -1,16 +1,39 @@
 'use client'
 
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import { ABOUT_STATS } from '@/constants'
-import { DownloadSimpleIcon } from '@phosphor-icons/react/dist/ssr'
+import { ABOUT_STATS, CV_OPTIONS } from '@/constants'
+import { cn } from '@/utils/cn'
+import { CaretDownIcon, DownloadSimpleIcon } from '@phosphor-icons/react/dist/ssr'
+import { useEffect, useRef, useState } from 'react'
 
 const AboutMe = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Close on Escape
+  useEffect(() => {
+    if (!isDropdownOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsDropdownOpen(false)
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isDropdownOpen])
+
   return (
-    <section
-      id='about-me'
-      className='relative z-30 px-2 py-16 md:px-6 md:py-24 lg:px-10'
-    >
-      <div className='mx-auto w-full max-w-[1200px]'>
+    <section id='about-me' className='relative z-30 px-2 py-16 md:px-6 md:py-24 lg:px-10'>
+      <div className='4k:max-w-[1600px] mx-auto w-full max-w-[1200px]'>
         {/* Section header */}
         <ScrollReveal direction='up' delay={0}>
           <div className='mb-12 flex items-center gap-4'>
@@ -26,46 +49,62 @@ const AboutMe = () => {
           <ScrollReveal direction='left' delay={0.1} className='flex-1'>
             <div className='flex flex-col gap-6'>
               <p className='text-16 leading-relaxed text-white/70'>
-                I design and build complete systems — from pixel-perfect React
-                interfaces to production GraphQL APIs and on-chain smart
-                contracts. My focus is on{' '}
-                <strong className='text-white'>
-                  security-first architecture
-                </strong>
-                ,{' '}
-                <strong className='text-white'>real-world payment flows</strong>
-                , and{' '}
+                I design and build complete systems — from pixel-perfect React interfaces to production GraphQL APIs and
+                on-chain smart contracts. My focus is on{' '}
+                <strong className='text-white'>security-first architecture</strong>,{' '}
+                <strong className='text-white'>real-world payment flows</strong>, and{' '}
                 <strong className='text-white'>performance at scale</strong>.
               </p>
 
               <p className='text-16 leading-relaxed text-white/70'>
-                Outside the standard Web2 stack I work with{' '}
-                <strong className='text-violet-300'>Wagmi + Viem</strong> on the
-                client, <strong className='text-violet-300'>ethers.js</strong>{' '}
-                on the server, and write{' '}
-                <strong className='text-violet-300'>Solidity</strong> contracts
-                with OpenZeppelin security patterns — bringing end-to-end
-                ownership across the full Web3 lifecycle.
+                Outside the standard Web2 stack I work with <strong className='text-violet-300'>Wagmi + Viem</strong> on
+                the client, <strong className='text-violet-300'>ethers.js</strong> on the server, and write{' '}
+                <strong className='text-violet-300'>Solidity</strong> contracts with OpenZeppelin security patterns —
+                bringing end-to-end ownership across the full Web3 lifecycle.
               </p>
 
-              <a
-                href='/CV_Thanh_Nguyen.pdf'
-                download
-                target='_blank'
-                className='hover:text-primary-300 center mt-2 w-fit gap-2 rounded-lg border border-white/30 bg-[linear-gradient(180deg,rgba(48,144,241,0)_0%,rgba(81,178,219,0.32)_100%),rgba(47,68,255,0.12)] px-8 py-2.5 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)_0%,rgba(60,8,126,0.42)_100%),rgba(113,47,255,0.24)] hover:shadow-[inset_0_0_12px_#bf97ff70]'
-              >
-                <DownloadSimpleIcon size={18} />
-                <span className='font-small-caps text-16'>Download CV</span>
-              </a>
+              {/* CV download dropdown */}
+              <div ref={dropdownRef} className='relative mt-2 w-fit'>
+                <button
+                  onClick={() => setIsDropdownOpen((prev) => !prev)}
+                  aria-expanded={isDropdownOpen}
+                  aria-haspopup='true'
+                  className='hover:text-primary-300 center gap-2 rounded-lg border border-white/30 bg-[linear-gradient(180deg,rgba(48,144,241,0)_0%,rgba(81,178,219,0.32)_100%),rgba(47,68,255,0.12)] px-8 py-2.5 text-center text-white shadow-[inset_0_0_12px_#5466ee3d] transition duration-300 hover:bg-[linear-gradient(180deg,rgba(60,8,126,0)_0%,rgba(60,8,126,0.42)_100%),rgba(113,47,255,0.24)] hover:shadow-[inset_0_0_12px_#bf97ff70]'
+                >
+                  <DownloadSimpleIcon size={18} />
+                  <span className='font-small-caps text-16'>Download CV</span>
+                  <CaretDownIcon
+                    size={14}
+                    className={cn('transition-transform duration-200', isDropdownOpen && 'rotate-180')}
+                  />
+                </button>
+
+                {isDropdownOpen && (
+                  <div
+                    role='menu'
+                    className='xs:min-w-[260px] absolute top-full left-0 z-50 mt-2 min-w-[220px] overflow-hidden rounded-lg border border-white/20 bg-[#0d0d2b]/95 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-md'
+                  >
+                    {CV_OPTIONS.map((cv) => (
+                      <a
+                        key={cv.filename}
+                        role='menuitem'
+                        href={`/${cv.filename}`}
+                        download
+                        onClick={() => setIsDropdownOpen(false)}
+                        className='flex flex-col gap-0.5 px-4 py-3 transition-colors duration-150 hover:bg-white/10 focus:bg-white/10 focus:outline-none'
+                      >
+                        <span className='text-14 font-medium text-white'>{cv.label}</span>
+                        <span className='text-12 text-white/50'>{cv.description}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </ScrollReveal>
 
           {/* Right — Stats */}
-          <ScrollReveal
-            direction='right'
-            delay={0.2}
-            className='sm:w-full md:w-auto'
-          >
+          <ScrollReveal direction='right' delay={0.2} className='sm:w-full md:w-auto'>
             <div className='grid grid-cols-2 gap-4 sm:grid-cols-2'>
               {ABOUT_STATS.map((stat) => (
                 <div

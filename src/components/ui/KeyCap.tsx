@@ -2,13 +2,7 @@
 
 import { Html, RoundedBox, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import {
-  useLayoutEffect,
-  useRef,
-  useState,
-  type FC,
-  type ReactNode,
-} from 'react'
+import { useLayoutEffect, useRef, useState, type FC, type ReactNode } from 'react'
 import * as THREE from 'three'
 
 export type TKeycapTheme = {
@@ -87,19 +81,19 @@ export const Keycap: FC<TKeycapProps> = ({
     }
   })
 
-  const handlePointerDown = (theme: TKeycapTheme) => {
+  const handlePointerOver = (theme: TKeycapTheme) => {
     setIsPressed(true)
     onPress?.(theme)
   }
 
-  const handlePointerUp = () => {
+  const handlePointerOut = () => {
     setIsPressed(false)
     onRelease?.()
+  }
 
+  const handleClick = () => {
     if (theme.url) {
-      setTimeout(() => {
-        window.open(theme.url, '_blank')
-      }, 200)
+      window.open(theme.url, '_blank')
     }
   }
 
@@ -111,9 +105,9 @@ export const Keycap: FC<TKeycapProps> = ({
           theme={theme}
           size={size}
           radius={radius}
-          onPointerDown={() => handlePointerDown(theme)}
-          onPointerUp={handlePointerUp}
-          onPointerLeave={handlePointerUp}
+          onPointerOver={() => handlePointerOver(theme)}
+          onPointerOut={handlePointerOut}
+          onClick={handleClick}
         />
         <KeycapLegend theme={theme} size={size} />
       </group>
@@ -137,18 +131,18 @@ type TKeycapBodyProps = {
   theme: TKeycapTheme
   size: [number, number, number]
   radius: number
-  onPointerDown: () => void
-  onPointerUp: () => void
-  onPointerLeave: () => void
+  onPointerOver: () => void
+  onPointerOut: () => void
+  onClick: () => void
 }
 
 const KeycapBody: FC<TKeycapBodyProps> = ({
   theme,
   size,
   radius,
-  onPointerDown,
-  onPointerUp,
-  onPointerLeave,
+  onPointerOver: onHoverEnter,
+  onPointerOut: onHoverLeave,
+  onClick,
 }) => {
   const meshRef = useRef<THREE.Mesh>(null)
   const [width, height, depth] = size
@@ -196,10 +190,12 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
 
   const handlePointerOver = () => {
     document.body.style.cursor = 'pointer'
+    onHoverEnter()
   }
 
   const handlePointerOut = () => {
     document.body.style.cursor = 'auto'
+    onHoverLeave()
   }
 
   useLayoutEffect(() => {
@@ -214,11 +210,9 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
     radius,
     smoothness: 4,
     position: [0, height / 2, 0] as [number, number, number],
-    onPointerDown,
-    onPointerUp,
-    onPointerLeave,
     onPointerOver: handlePointerOver,
     onPointerOut: handlePointerOut,
+    onClick,
   }
 
   if (theme.material === 'glass') {
@@ -241,11 +235,7 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
 
   return (
     <RoundedBox {...commonProps}>
-      <meshStandardMaterial
-        color={theme.bodyColor}
-        roughness={0.3}
-        metalness={0.0}
-      />
+      <meshStandardMaterial color={theme.bodyColor} roughness={0.3} metalness={0.0} />
     </RoundedBox>
   )
 }
@@ -265,13 +255,7 @@ const KeycapLegend: FC<TKeycapLegendProps> = ({ theme, size }) => {
 
   if (typeof theme.text !== 'string') {
     return (
-      <Html
-        position={iconPos}
-        center
-        transform
-        rotation={[-Math.PI / 2, 0, 0]}
-        pointerEvents='none'
-      >
+      <Html position={iconPos} center transform rotation={[-Math.PI / 2, 0, 0]} pointerEvents='none'>
         {theme.text}
       </Html>
     )

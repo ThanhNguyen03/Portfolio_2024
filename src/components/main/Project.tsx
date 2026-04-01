@@ -11,9 +11,7 @@ import ProjectCard from '../ui/ProjectCard'
 
 const ArchitectureFlow = () => (
   <div className='rounded-4 h-full border border-violet-700/40 bg-violet-950/20 p-5 backdrop-blur-sm'>
-    <p className='text-13 mb-5 font-medium tracking-widest text-violet-400 uppercase'>
-      System Architecture
-    </p>
+    <p className='text-13 mb-5 font-medium tracking-widest text-violet-400 uppercase'>System Architecture</p>
     <div className='flex flex-col gap-3'>
       {[
         {
@@ -33,12 +31,7 @@ const ArchitectureFlow = () => (
         },
         {
           label: 'Blockchain',
-          items: [
-            'Solidity 0.8.24',
-            'Hardhat',
-            'OpenZeppelin',
-            'Ethereum Sepolia',
-          ],
+          items: ['Solidity 0.8.24', 'Hardhat', 'OpenZeppelin', 'Ethereum Sepolia'],
           color: 'border-pink-500/50 bg-pink-950/30 text-pink-300',
         },
       ].map((layer, i, arr) => (
@@ -48,10 +41,7 @@ const ArchitectureFlow = () => (
               {layer.label}
             </span>
             {layer.items.map((item) => (
-              <span
-                key={item}
-                className={`rounded-2 border px-2.5 py-1 text-[11px] font-medium ${layer.color}`}
-              >
+              <span key={item} className={`rounded-2 border px-2.5 py-1 text-[11px] font-medium ${layer.color}`}>
                 {item}
               </span>
             ))}
@@ -70,10 +60,7 @@ const ArchitectureFlow = () => (
 
 const Project = () => {
   return (
-    <section
-      id='projects'
-      className='relative z-30 overflow-hidden px-2 py-10 md:px-6 md:py-20 lg:px-10'
-    >
+    <section id='projects' className='relative z-30 overflow-hidden px-2 py-10 md:px-6 md:py-20 lg:px-10'>
       <div className='mx-auto flex w-full max-w-[1200px] flex-col gap-16'>
         {/* ── Section header ─────────────────────────────── */}
         <ScrollReveal direction='up' delay={0} className='w-full'>
@@ -113,10 +100,9 @@ const Project = () => {
                     </span>
                   </div>
                   <p className='text-15 leading-relaxed text-white/70'>
-                    A 3D-animated, real-time food ordering platform with
-                    multi-authentication (JWT · Google OAuth · Web3 wallet) and
-                    three payment methods — PayPal webhooks, Cash on Delivery,
-                    and on-chain ECDSA-verified crypto payments.
+                    A 3D-animated, real-time food ordering platform with multi-authentication (JWT · Google OAuth · Web3
+                    wallet) and three payment methods — PayPal webhooks, Cash on Delivery, and on-chain ECDSA-verified
+                    crypto payments.
                   </p>
                 </div>
 
@@ -138,11 +124,7 @@ const Project = () => {
           {/* Architecture + Features grid */}
           <div className='flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-8'>
             {/* Architecture diagram */}
-            <ScrollReveal
-              direction='left'
-              delay={0.1}
-              className='lg:w-[360px] lg:shrink-0'
-            >
+            <ScrollReveal direction='left' delay={0.1} className='lg:w-[360px] lg:shrink-0'>
               <ArchitectureFlow />
             </ScrollReveal>
 
@@ -150,11 +132,7 @@ const Project = () => {
             <div className='flex-1'>
               <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
                 {NGOO_SYSTEM_FEATURES.map((feature, i) => (
-                  <ScrollReveal
-                    key={feature.title}
-                    direction='up'
-                    delay={0.1 + i * 0.05}
-                  >
+                  <ScrollReveal key={feature.title} direction='up' delay={0.1 + i * 0.05}>
                     <FeatureHighlight {...feature} />
                   </ScrollReveal>
                 ))}

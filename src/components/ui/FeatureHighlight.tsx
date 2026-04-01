@@ -35,18 +35,11 @@ const ICON_COLOR: Record<TFeatureHighlight['iconName'], string> = {
 
 type TFeatureHighlightProps = TFeatureHighlight
 
-const FeatureHighlight: FC<TFeatureHighlightProps> = ({
-  iconName,
-  title,
-  description,
-  tags,
-}) => {
+const FeatureHighlight: FC<TFeatureHighlightProps> = ({ iconName, title, description, tags }) => {
   return (
     <div className='group rounded-4 relative flex flex-col gap-3 border border-violet-700/40 bg-violet-950/20 p-5 backdrop-blur-sm transition-all duration-300 hover:border-violet-500/60 hover:bg-violet-900/20'>
       {/* Icon */}
-      <div className={`${ICON_COLOR[iconName]} w-fit`}>
-        {ICON_MAP[iconName]}
-      </div>
+      <div className={`${ICON_COLOR[iconName]} w-fit`}>{ICON_MAP[iconName]}</div>
 
       {/* Title */}
       <h3 className='text-16 font-semibold text-white'>{title}</h3>

@@ -10,11 +10,7 @@ type TSkillDataProviderProps = {
   name: string
 }
 
-export const SkillDataProvider: FC<TSkillDataProviderProps> = ({
-  icon,
-  index,
-  name,
-}) => {
+export const SkillDataProvider: FC<TSkillDataProviderProps> = ({ icon, index, name }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInview = useInView(containerRef, {
     once: true,
@@ -41,11 +37,7 @@ export const SkillDataProvider: FC<TSkillDataProviderProps> = ({
         offset={0}
         position='top'
         className='z-99 bg-white'
-        content={
-          <p className='text-14 font-semibold -tracking-[0.32px] text-white'>
-            {name}
-          </p>
-        }
+        content={<p className='text-14 font-semibold -tracking-[0.32px] text-white'>{name}</p>}
       >
         {icon}
       </Tooltip>

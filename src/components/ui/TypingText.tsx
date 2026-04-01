@@ -1,11 +1,5 @@
 import { cn } from '@/utils/cn'
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 
 type TTypingTextProps = {
   sequence: (string | number)[]
@@ -16,10 +10,7 @@ type TTypingTextProps = {
 }
 
 export const TypingText = forwardRef<HTMLSpanElement, TTypingTextProps>(
-  (
-    { sequence, speed = 50, deletionSpeed = 40, repeat = Infinity, className },
-    ref,
-  ) => {
+  ({ sequence, speed = 50, deletionSpeed = 40, repeat = Infinity, className }, ref) => {
     const spanRef = useRef<HTMLSpanElement>(null)
     const [text, setText] = useState<string>('')
     const seqIndex = useRef<number>(0)

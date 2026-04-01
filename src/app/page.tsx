@@ -24,17 +24,8 @@ export default function Home() {
       <StarCanvas />
       <ScrollProgress />
       <Header isInitVideoEnded={isVideoEnded} />
-      <main
-        id='main'
-        className={cn(
-          'flex size-full flex-col gap-20 overflow-x-hidden',
-          'max-[425px]:hidden',
-        )}
-      >
-        <Hero
-          isInitVideoEnded={isVideoEnded}
-          setIsVideoEnded={setIsVideo1Ended}
-        />
+      <main id='main' className={cn('flex size-full flex-col gap-20 overflow-x-hidden', 'max-[425px]:hidden')}>
+        <Hero isInitVideoEnded={isVideoEnded} setIsVideoEnded={setIsVideo1Ended} />
         {isVideoEnded && (
           <>
             <AboutMe />

@@ -1,14 +1,7 @@
 'use client'
 
 import { cn } from '@/utils/cn'
-import {
-  CSSProperties,
-  type PropsWithChildren,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { CSSProperties, type PropsWithChildren, ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 type TPosition = 'top' | 'bottom' | 'left' | 'right'
@@ -74,8 +67,7 @@ export const Tooltip = ({
   const tooltipRef = useRef<HTMLDivElement | null>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const arrowConfig =
-    arrow === true ? DEFAULT_ARROW : { ...DEFAULT_ARROW, ...arrow }
+  const arrowConfig = arrow === true ? DEFAULT_ARROW : { ...DEFAULT_ARROW, ...arrow }
   const responsiveOffset = arrow ? offset + arrowConfig.height : offset
 
   const tooltipPositionClassName = {
@@ -180,12 +172,9 @@ export const Tooltip = ({
       }
 
       // Find best alternative position
-      const alternatives: TPosition[] = [
-        'top',
-        'bottom',
-        'left',
-        'right',
-      ].filter((pos) => pos !== preferredPosition) as TPosition[]
+      const alternatives: TPosition[] = ['top', 'bottom', 'left', 'right'].filter(
+        (pos) => pos !== preferredPosition,
+      ) as TPosition[]
 
       for (const pos of alternatives) {
         const fits = (() => {
@@ -208,9 +197,7 @@ export const Tooltip = ({
 
       // If nothing fits perfectly, use position with most space
       const maxSpace = Math.max(...Object.values(spaces))
-      const bestPosition = Object.entries(spaces).find(
-        ([, space]) => space === maxSpace,
-      )?.[0] as TPosition
+      const bestPosition = Object.entries(spaces).find(([, space]) => space === maxSpace)?.[0] as TPosition
 
       return bestPosition || preferredPosition
     }
@@ -221,9 +208,7 @@ export const Tooltip = ({
       }
 
       const rect = ref.current.getBoundingClientRect()
-      const childrenStyle = window.getComputedStyle(
-        ref.current?.firstElementChild as HTMLElement,
-      )
+      const childrenStyle = window.getComputedStyle(ref.current?.firstElementChild as HTMLElement)
       const childrenMl = parseFloat(childrenStyle.marginLeft)
       const childrenMr = parseFloat(childrenStyle.marginRight)
 
@@ -233,19 +218,11 @@ export const Tooltip = ({
       switch (pos) {
         case 'top':
           top = rect.top + window.scrollY - responsiveOffset
-          left =
-            rect.left +
-            rect.width / 2 +
-            window.scrollX +
-            (childrenMl - childrenMr) / 2
+          left = rect.left + rect.width / 2 + window.scrollX + (childrenMl - childrenMr) / 2
           break
         case 'bottom':
           top = rect.bottom + window.scrollY + responsiveOffset
-          left =
-            rect.left +
-            rect.width / 2 +
-            window.scrollX +
-            (childrenMl - childrenMr) / 2
+          left = rect.left + rect.width / 2 + window.scrollX + (childrenMl - childrenMr) / 2
           break
         case 'left':
           top = rect.top + window.scrollY + rect.height / 2
@@ -265,10 +242,7 @@ export const Tooltip = ({
     tempTooltip.style.position = 'absolute'
     tempTooltip.style.visibility = 'hidden'
     tempTooltip.style.pointerEvents = 'none'
-    tempTooltip.className = cn(
-      'rounded bg-black/70 px-2 py-1 text-sm whitespace-nowrap text-white',
-      className,
-    )
+    tempTooltip.className = cn('rounded bg-black/70 px-2 py-1 text-sm whitespace-nowrap text-white', className)
     tempTooltip.textContent = typeof content === 'string' ? content : ''
     document.body.appendChild(tempTooltip)
 
@@ -276,11 +250,7 @@ export const Tooltip = ({
     const triggerRect = ref.current.getBoundingClientRect()
 
     // Determine best position
-    const bestPosition = calculateBestPosition(
-      triggerRect,
-      tooltipRect,
-      position,
-    )
+    const bestPosition = calculateBestPosition(triggerRect, tooltipRect, position)
     setActualPosition(bestPosition)
 
     // Calculate coordinates

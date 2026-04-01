@@ -5,7 +5,7 @@ import { useTypingAnimation } from '@/hook/typing-animate'
 import { cn } from '@/utils/cn'
 import { Environment } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { useState, type FC } from 'react'
+import { useRef, useState, type FC } from 'react'
 import { Keycap, type TKeycapTheme } from './KeyCap'
 
 type TKeyboardProps = {
@@ -15,8 +15,8 @@ type TKeyboardProps = {
   keySize?: [number, number, number]
   keyRadius?: number
   position?: [number, number, number]
-  onKeyPress?: (theme: TKeycapTheme) => void
-  onKeyRelease?: () => void
+  onKeyHover?: (theme: TKeycapTheme) => void
+  onKeyLeave?: () => void
 }
 
 const KeyboardModel: FC<TKeyboardProps> = ({
@@ -26,8 +26,8 @@ const KeyboardModel: FC<TKeyboardProps> = ({
   keySize = [1.2, 0.5, 1.2],
   keyRadius = 0.08,
   position = [0, 0, 0],
-  onKeyPress,
-  onKeyRelease,
+  onKeyHover,
+  onKeyLeave,
 }) => {
   const rows = Math.ceil(KEYBOARD_THEMES.length / columns)
   const lastRowCols = KEYBOARD_THEMES.length % columns || columns
@@ -43,9 +43,7 @@ const KeyboardModel: FC<TKeyboardProps> = ({
 
       {/* Keyboard frame */}
       <mesh position={[0, -0.2, 0]} receiveShadow>
-        <boxGeometry
-          args={[columns * spacing + 0.4, 0.2, rows * spacing + 0.4]}
-        />
+        <boxGeometry args={[columns * spacing + 0.4, 0.2, rows * spacing + 0.4]} />
         <meshStandardMaterial color='#2a2a2a' roughness={0.5} metalness={0.4} />
       </mesh>
 
@@ -77,8 +75,8 @@ const KeyboardModel: FC<TKeyboardProps> = ({
             position={[x, 0, y]}
             size={keySize}
             radius={keyRadius}
-            onPress={onKeyPress}
-            onRelease={onKeyRelease}
+            onPress={onKeyHover}
+            onRelease={onKeyLeave}
             renderOrder={renderOrder}
           />
         )
@@ -92,47 +90,49 @@ type TSkillKeyboardProps = {
   className?: string
 }
 export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
-  const [clickedKey, setClickedKey] = useState<TKeycapTheme>()
-  const { displayText, isTyping } = useTypingAnimation(
-    clickedKey?.description || '',
-    !!clickedKey,
-    3,
-  )
+  const [hoveredKey, setHoveredKey] = useState<TKeycapTheme>()
+  const leaveTimerRef = useRef<NodeJS.Timeout>()
+
+  const { displayText, isTyping } = useTypingAnimation(hoveredKey?.description || '', !!hoveredKey, 3)
+
   const LIST_WHITE_TEXT = ['#d0d0d0', '#fff', '#f2f7fd']
 
+  // NOTE: Debounce the leave event to prevent flickering when moving between
+  // adjacent keycaps — the brief gap between pointerOut and the next pointerOver
+  // would flash "Hover a keycap for details" without this delay.
+  const handleKeyHover = (theme: TKeycapTheme) => {
+    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current)
+    setHoveredKey(theme)
+  }
+
+  const handleKeyLeave = () => {
+    leaveTimerRef.current = setTimeout(() => {
+      setHoveredKey(undefined)
+    }, 50)
+  }
+
   return (
-    <div
-      className={cn(
-        'center relative z-50 h-[560px] w-full max-w-[800px]',
-        className,
-      )}
-    >
+    <div className={cn('center relative z-50 h-[560px] w-full max-w-[800px]', className)}>
       <div className='absolute top-0 mr-15 flex size-full max-w-[500px] -rotate-26 skew-[2.5deg] flex-col text-white'>
         <div className='flex flex-col items-start gap-2'>
-          {clickedKey ? (
+          {hoveredKey ? (
             <h3
               className={cn(
                 'text-23 size-full font-bold',
-                LIST_WHITE_TEXT.includes(clickedKey.bodyColor)
+                LIST_WHITE_TEXT.includes(hoveredKey.bodyColor)
                   ? 'text-shadow-stroke-gray-2'
                   : 'text-shadow-stroke-white-2',
               )}
-              style={{
-                color: `${clickedKey.bodyColor}`,
-              }}
+              style={{ color: `${hoveredKey.bodyColor}` }}
             >
-              {clickedKey.name}
+              {hoveredKey.name}
             </h3>
           ) : (
-            <p className='text-23 size-full font-semibold'>
-              Hold a keycap for details
-            </p>
+            <p className='text-23 size-full font-semibold'>Hover a keycap for details</p>
           )}
           <p className='text-14 min-h-30 leading-[160%]'>
             <span>{displayText}</span>
-            {isTyping && (
-              <span className='ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-white' />
-            )}
+            {isTyping && <span className='ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-white' />}
           </p>
         </div>
       </div>
@@ -155,8 +155,8 @@ export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
           keySize={[1, 0.6, 1]}
           keyRadius={0.1}
           position={[0, 0.8, 0]}
-          onKeyPress={setClickedKey}
-          onKeyRelease={() => setClickedKey(undefined)}
+          onKeyHover={handleKeyHover}
+          onKeyLeave={handleKeyLeave}
         />
       </Canvas>
     </div>

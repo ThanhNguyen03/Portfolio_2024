@@ -1,47 +1,83 @@
 import { useEffect, useRef, useState } from 'react'
 
-export const useTypingAnimation = (
-  text: string,
-  isActive: boolean,
-  timeToFinish?: number,
-) => {
+type TPhase = 'idle' | 'deleting' | 'pausing' | 'typing'
+
+export const useTypingAnimation = (text: string, isActive: boolean, timeToFinish?: number) => {
   const [displayText, setDisplayText] = useState<string>('')
   const [isTyping, setIsTyping] = useState(false)
+
+  const phaseRef = useRef<TPhase>('idle')
   const timeoutRef = useRef<NodeJS.Timeout>()
-  const indexRef = useRef<number>(0)
+  const displayTextRef = useRef<string>('')
+  const targetTextRef = useRef<string>('')
+
+  // Keep displayTextRef in sync so animation callbacks read current value
+  const syncedSetDisplay = (val: string) => {
+    displayTextRef.current = val
+    setDisplayText(val)
+  }
 
   useEffect(() => {
+    const clearTimer = () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+
     if (!isActive || !text) {
-      setDisplayText('')
+      clearTimer()
+      phaseRef.current = 'idle'
+      syncedSetDisplay('')
       setIsTyping(false)
-      indexRef.current = 0
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
       return
     }
 
-    setIsTyping(true)
-    indexRef.current = 0
-    setDisplayText('')
+    // Same text already fully typed — do nothing
+    if (text === targetTextRef.current && phaseRef.current === 'idle' && displayTextRef.current === text) {
+      return
+    }
 
-    const typeNextChar = () => {
-      if (indexRef.current < text.length) {
-        setDisplayText(text.slice(0, indexRef.current + 1))
-        indexRef.current++
-        timeoutRef.current = setTimeout(typeNextChar, timeToFinish || 30) // Speed of typing
-      } else {
+    targetTextRef.current = text
+
+    const typeSpeed = timeToFinish ?? 30
+    // Delete faster than type so the switch feels snappy
+    const deleteSpeed = Math.max(1, Math.floor(typeSpeed / 3))
+
+    const runDelete = () => {
+      if (displayTextRef.current.length === 0) {
+        phaseRef.current = 'pausing'
+        setIsTyping(true)
+        timeoutRef.current = setTimeout(runType, 150)
+        return
+      }
+      syncedSetDisplay(displayTextRef.current.slice(0, -1))
+      timeoutRef.current = setTimeout(runDelete, deleteSpeed)
+    }
+
+    const runType = () => {
+      const target = targetTextRef.current
+      if (displayTextRef.current.length >= target.length) {
+        phaseRef.current = 'idle'
         setIsTyping(false)
+        return
       }
+      syncedSetDisplay(target.slice(0, displayTextRef.current.length + 1))
+      timeoutRef.current = setTimeout(runType, typeSpeed)
     }
 
-    timeoutRef.current = setTimeout(typeNextChar, 100) // Initial delay
+    clearTimer()
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+    if (displayTextRef.current.length > 0) {
+      // Existing text visible — delete it first
+      phaseRef.current = 'deleting'
+      setIsTyping(true)
+      timeoutRef.current = setTimeout(runDelete, deleteSpeed)
+    } else {
+      // Nothing to delete — type immediately
+      phaseRef.current = 'typing'
+      setIsTyping(true)
+      timeoutRef.current = setTimeout(runType, 100)
     }
+
+    return clearTimer
   }, [text, isActive, timeToFinish])
 
   return { displayText, isTyping }

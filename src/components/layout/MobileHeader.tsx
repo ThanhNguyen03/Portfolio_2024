@@ -9,26 +9,18 @@ type TMobileHeaderProps = {
   onClose: () => void
   activeIndex: number
 }
-const MobileHeader: FC<TMobileHeaderProps> = ({
-  isOpen,
-  onClose,
-  activeIndex,
-}) => {
+const MobileHeader: FC<TMobileHeaderProps> = ({ isOpen, onClose, activeIndex }) => {
   return (
     <div
       className={cn(
         'absolute inset-0 bg-neutral-900/70 backdrop-blur-3xl duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden',
-        isOpen
-          ? 'h-screen max-h-screen translate-y-0'
-          : 'h-0 max-h-0 -translate-y-full',
+        isOpen ? 'h-screen max-h-screen translate-y-0' : 'h-0 max-h-0 -translate-y-full',
       )}
     >
       <div
         className={cn(
           'relative size-full overflow-hidden px-2 pt-30 pb-4 backdrop-blur-3xl duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]',
-          isOpen
-            ? 'h-screen max-h-screen translate-y-0'
-            : 'h-0 max-h-0 -translate-y-full',
+          isOpen ? 'h-screen max-h-screen translate-y-0' : 'h-0 max-h-0 -translate-y-full',
         )}
       >
         <div className='flex size-full flex-col items-start justify-between'>
@@ -52,19 +44,11 @@ const MobileHeader: FC<TMobileHeaderProps> = ({
             ))}
           </div>
           <div
-            className={cn(
-              'flex w-full items-center justify-center gap-10 pt-6',
-              isOpen && 'border-t border-white/30',
-            )}
+            className={cn('flex w-full items-center justify-center gap-10 pt-6', isOpen && 'border-t border-white/30')}
           >
             {SOCIAL_NAVIGATION.map((social) => (
               <Link key={social.name} href={social.href}>
-                <Image
-                  src={social.image || ''}
-                  alt={social.name}
-                  width={28}
-                  height={28}
-                />
+                <Image src={social.image || ''} alt={social.name} width={28} height={28} />
               </Link>
             ))}
           </div>

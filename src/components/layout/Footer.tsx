@@ -37,13 +37,8 @@ const Footer: FC<TFooterProps> = ({ isInitVideoEnded }) => {
               target='_blank'
               className='text-14 hover: flex items-center gap-1 text-white'
             >
-              <MailboxIcon
-                size={24}
-                weight='duotone'
-                className='text-pink-300'
-              />
-              Contact:{' '}
-              <span className='italic underline'>thanhfng.dev@gmail.com</span>
+              <MailboxIcon size={24} weight='duotone' className='text-pink-300' />
+              Contact: <span className='italic underline'>thanhfng.dev@gmail.com</span>
             </Link>
           </div>
 
@@ -51,9 +46,7 @@ const Footer: FC<TFooterProps> = ({ isInitVideoEnded }) => {
           <div className='flex gap-10 lg:gap-20'>
             {LIST_FOOTER_NAVIGATION.map((link) => (
               <div key={link.title} className='flex flex-col gap-4 lg:gap-3'>
-                <p className='text-14! leading-[160%] font-semibold text-white/50'>
-                  {link.title}
-                </p>
+                <p className='text-14! leading-[160%] font-semibold text-white/50'>{link.title}</p>
                 <ul className='flex flex-col gap-4 text-left font-semibold lg:gap-1'>
                   {link.children.map((child) => (
                     <li key={child.name}>
@@ -76,22 +69,13 @@ const Footer: FC<TFooterProps> = ({ isInitVideoEnded }) => {
         {/* policy */}
         <div className='text-12! flex w-full flex-col justify-between gap-2 border-t border-white/30 py-2 leading-[130%] md:flex-row md:gap-0'>
           <p className='font-medium text-white/50'>
-            © 2025 <span className='italic'>thanhf.ng_</span>. All rights
-            reserved.
+            © 2025 <span className='italic'>thanhf.ng_</span>. All rights reserved.
           </p>
           <div className='flex items-center gap-3'>
-            <Link
-              href='/'
-              title='Privacy Policy'
-              className='py-0.75 text-white underline'
-            >
+            <Link href='/' title='Privacy Policy' className='py-0.75 text-white underline'>
               Privacy Policy
             </Link>
-            <Link
-              href='/'
-              title='Term of Service'
-              className='py-0.75 text-white underline'
-            >
+            <Link href='/' title='Term of Service' className='py-0.75 text-white underline'>
               Term of Service
             </Link>
           </div>

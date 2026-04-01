@@ -59,7 +59,7 @@ export const SOCIAL_NAVIGATION: TNavigation[] = [
   {
     name: 'LinkedIn',
     image: linkdedinLogo,
-    href: 'https://www.linkedin.com/in/thanhfng12dev/',
+    href: 'https://www.linkedin.com/in/thanhfng-dev/',
   },
   {
     name: 'Github',
@@ -70,45 +70,27 @@ export const SOCIAL_NAVIGATION: TNavigation[] = [
 export const HEADER_NAVIGATION = [
   {
     id: 'about-me',
-    icon: (
-      <DevToLogoIcon
-        weight='fill'
-        className='size-7 group-data-[active=true]:text-pink-300 md:size-6'
-        size={24}
-      />
-    ),
+    icon: <DevToLogoIcon weight='fill' className='size-7 group-data-[active=true]:text-pink-300 md:size-6' size={24} />,
     label: 'About',
   },
   {
     id: 'skills',
     icon: (
-      <CodesandboxLogoIcon
-        weight='fill'
-        className='size-7 group-data-[active=true]:text-red-500 md:size-6'
-        size={24}
-      />
+      <CodesandboxLogoIcon weight='fill' className='size-7 group-data-[active=true]:text-red-500 md:size-6' size={24} />
     ),
     label: 'Skills',
   },
   {
     id: 'projects',
     icon: (
-      <RocketLaunchIcon
-        weight='fill'
-        className='size-7 group-data-[active=true]:text-red-500 md:size-6'
-        size={24}
-      />
+      <RocketLaunchIcon weight='fill' className='size-7 group-data-[active=true]:text-red-500 md:size-6' size={24} />
     ),
     label: 'Projects',
   },
   {
     id: 'contact',
     icon: (
-      <EnvelopeSimpleIcon
-        weight='fill'
-        className='size-7 group-data-[active=true]:text-cyan-400 md:size-6'
-        size={24}
-      />
+      <EnvelopeSimpleIcon weight='fill' className='size-7 group-data-[active=true]:text-cyan-400 md:size-6' size={24} />
     ),
     label: 'Contact',
   },
@@ -130,7 +112,7 @@ export const LIST_FOOTER_NAVIGATION: Array<
     children: [
       { href: 'https://m.me/thanhfnguyen.03', name: 'Facebook' },
       { href: 'https://ig.me/m/thanhf.ng_', name: 'Instagram' },
-      { href: 'https://www.linkedin.com/in/thanhfnguyen03/', name: 'LinkedIn' },
+      { href: 'https://www.linkedin.com/in/thanhfng-dev/', name: 'LinkedIn' },
       { href: 'https://t.me/thanhf.ng_', name: 'Telegram' },
     ],
   },
@@ -197,12 +179,7 @@ export const FE_SKILL_DATA: TSkill[] = [
     name: 'Framer Motion',
     icon: (
       <div className='center rounded-2 relative aspect-square size-12 bg-yellow-300 p-2'>
-        <Image
-          alt='framer motion'
-          src={framerMotionLogo}
-          width={40}
-          height={40}
-        />
+        <Image alt='framer motion' src={framerMotionLogo} width={40} height={40} />
       </div>
     ),
   },
@@ -214,13 +191,7 @@ export const FE_SKILL_DATA: TSkill[] = [
     name: 'Wagmi',
     icon: (
       <div className='center rounded-2 relative aspect-square size-12 bg-[#C4A878] p-1'>
-        <Image
-          src={wagmiLogo}
-          alt='apollo client'
-          width={50}
-          height={50}
-          className='rounded-2'
-        />
+        <Image src={wagmiLogo} alt='apollo client' width={50} height={50} className='rounded-2' />
       </div>
     ),
   },
@@ -314,13 +285,7 @@ export const BE_SKILL_DATA: TSkill[] = [
     name: 'EthersJS',
     icon: (
       <div className='center rounded-2 relative aspect-square size-12 bg-[#24339B] p-2'>
-        <Image
-          src={ethersLogo}
-          alt='apollo client'
-          width={80}
-          height={80}
-          className='rounded-2'
-        />
+        <Image src={ethersLogo} alt='apollo client' width={80} height={80} className='rounded-2' />
       </div>
     ),
   },
@@ -382,15 +347,7 @@ export type TFeatureHighlight = {
   title: string
   description: string
   tags: string[]
-  iconName:
-    | 'currency'
-    | 'lightning'
-    | 'shield'
-    | 'lock'
-    | 'gauge'
-    | 'cube'
-    | 'code'
-    | 'activity'
+  iconName: 'currency' | 'lightning' | 'shield' | 'lock' | 'gauge' | 'cube' | 'code' | 'activity'
 }
 
 export const NGOO_SYSTEM_FEATURES: TFeatureHighlight[] = [
@@ -471,21 +428,42 @@ export const ABOUT_STATS = [
   { value: '3', label: 'Security Audits' },
 ]
 
+export type TCVOption = {
+  label: string
+  description: string
+  filename: string
+}
+
+export const CV_OPTIONS: TCVOption[] = [
+  {
+    label: 'Frontend Developer',
+    description: 'React, Next.js, TypeScript',
+    filename: 'CV_FE_1April.pdf',
+  },
+  {
+    label: 'FullStack – FE Engineer',
+    description: 'Full-stack, frontend emphasis',
+    filename: 'CV_FS_FE_1April.pdf',
+  },
+  {
+    label: 'Software Engineer',
+    description: 'Full-stack, strong backend',
+    filename: 'CV_FS_BE_1April.pdf',
+  },
+  {
+    label: 'Web3 Engineer',
+    description: 'Blockchain & smart contracts',
+    filename: 'CV_WEB3_1April.pdf',
+  },
+]
+
 // List of themes for the keyboard
 export const KEYBOARD_THEMES: TKeycapTheme[] = [
   // Row 1
   {
     bodyColor: '#fff',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={threeLogo}
-        alt='three'
-        width={26}
-        height={26}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={threeLogo} alt='three' width={26} height={26} />,
     material: 'plastic',
     position: [0.04, 0.7, 0.05],
     name: 'Three.js',
@@ -495,15 +473,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#FFD34E',
     textColor: '#fff',
-    text: (
-      <Image
-        className='rounded-1 pointer-events-none'
-        src={jsLogo}
-        alt='js'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='rounded-1 pointer-events-none' src={jsLogo} alt='js' width={22} height={22} />,
     material: 'metal',
     position: [-0.01, 0.6, -0.01],
     name: 'JavaScript',
@@ -513,15 +483,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#c4473a',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={angularLogo}
-        alt='angular'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={angularLogo} alt='angular' width={22} height={22} />,
     material: 'plastic',
     position: [-0.01, 0.7, 0.06],
     name: 'Angular',
@@ -531,15 +493,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#68217A',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={cSharpLogo}
-        alt='c sharp'
-        width={23}
-        height={23}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={cSharpLogo} alt='c sharp' width={23} height={23} />,
     material: 'plastic',
     position: [-0.02, 0.7, 0.05],
     name: 'C#',
@@ -549,15 +503,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#000000',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={vercelLogo}
-        alt='vercel'
-        width={20}
-        height={20}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={vercelLogo} alt='vercel' width={20} height={20} />,
     material: 'plastic',
     position: [0, 0.6, -0.05],
     name: 'Vercel',
@@ -567,15 +513,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#E44D26',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={htmlLogo}
-        alt='html'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={htmlLogo} alt='html' width={22} height={22} />,
     material: 'plastic',
     position: [0, 0.6, 0],
     name: 'HTML5',
@@ -585,15 +523,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#24339B',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='rounded-0.5 pointer-events-none'
-        src={ethersLogo}
-        alt='ethers'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='rounded-0.5 pointer-events-none' src={ethersLogo} alt='ethers' width={22} height={22} />,
     material: 'plastic',
     position: [-0.03, 0.7, 0.05],
     name: 'Ethers.js',
@@ -603,15 +533,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#1572B6',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={cssLogo}
-        alt='css'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={cssLogo} alt='css' width={22} height={22} />,
     material: 'plastic',
     position: [0, 0.6, 0],
     name: 'CSS3',
@@ -623,15 +545,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#f37036',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={postmanLogo}
-        alt='postman'
-        width={24}
-        height={24}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={postmanLogo} alt='postman' width={24} height={24} />,
     material: 'plastic',
     position: [0.03, 0.7, 0.05],
     name: 'Postman',
@@ -642,13 +556,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
     bodyColor: '#38bdf8',
     textColor: '#ffffff',
     text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={tailwindLogo}
-        alt='tailwind'
-        width={22}
-        height={22}
-      />
+      <Image className='pointer-events-none select-none' src={tailwindLogo} alt='tailwind' width={22} height={22} />
     ),
     material: 'plastic',
     position: [0.02, 0.7, 0.04],
@@ -659,15 +567,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#a259ff',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={figmaLogo}
-        alt='figma'
-        width={20}
-        height={20}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={figmaLogo} alt='figma' width={20} height={20} />,
     material: 'plastic',
     position: [-0.02, 0.7, 0.02],
     name: 'Figma',
@@ -677,15 +577,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#2A0E61',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={apolloLogo}
-        alt='apollo'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={apolloLogo} alt='apollo' width={22} height={22} />,
     material: 'plastic',
     position: [-0.02, 0.7, 0.04],
     name: 'Apollo GraphQL',
@@ -696,13 +588,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
     bodyColor: '#fff',
     textColor: '#ffffff',
     text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={framerMotionLogo}
-        alt='framer'
-        width={22}
-        height={22}
-      />
+      <Image className='pointer-events-none select-none' src={framerMotionLogo} alt='framer' width={22} height={22} />
     ),
     material: 'plastic',
     position: [-0.05, 0.7, 0.07],
@@ -713,15 +599,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#A2CB8B',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={vitestLogo}
-        alt='vitest'
-        width={20}
-        height={20}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={vitestLogo} alt='vitest' width={20} height={20} />,
     material: 'plastic',
     position: [-0.04, 0.7, 0.02],
     name: 'Vitest',
@@ -731,15 +609,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#0494C4',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={dockerLogo}
-        alt='docker'
-        width={28}
-        height={28}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={dockerLogo} alt='docker' width={28} height={28} />,
     material: 'plastic',
     position: [-0.1, 0.7, 0.02],
     name: 'Docker',
@@ -750,13 +620,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
     bodyColor: '#fff',
     textColor: '#ffffff',
     text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={sqlServerLogo}
-        alt='sql server'
-        width={22}
-        height={22}
-      />
+      <Image className='pointer-events-none select-none' src={sqlServerLogo} alt='sql server' width={22} height={22} />
     ),
     material: 'plastic',
     position: [-0.05, 0.7, 0.02],
@@ -769,15 +633,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#0acf83',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={mongoDBLogo}
-        alt='mongodb'
-        width={23}
-        height={23}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={mongoDBLogo} alt='mongodb' width={23} height={23} />,
     material: 'plastic',
     position: [0.02, 0.7, 0.02],
     name: 'MongoDB',
@@ -805,15 +661,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#fff',
     textColor: '#000000',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={socketLogo}
-        alt='socket'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={socketLogo} alt='socket' width={22} height={22} />,
     material: 'plastic',
     position: [0, 0.7, 0.02],
     name: 'Socket.io',
@@ -823,15 +671,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#FFD34E',
     textColor: '#000000',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={viemLogo}
-        alt='viem'
-        width={23}
-        height={23}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={viemLogo} alt='viem' width={23} height={23} />,
     material: 'plastic',
     position: [-0.02, 0.7, 0.03],
     name: 'Viem',
@@ -841,15 +681,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#F34F29',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={gitLogo}
-        alt='git'
-        width={22}
-        height={22}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={gitLogo} alt='git' width={22} height={22} />,
     material: 'plastic',
     position: [-0.03, 0.7, 0.02],
     name: 'Git',
@@ -860,13 +692,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
     bodyColor: '#06B6D4',
     textColor: '#ffffff',
     text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={postgreSqlLogo}
-        alt='postgresql'
-        width={22}
-        height={22}
-      />
+      <Image className='pointer-events-none select-none' src={postgreSqlLogo} alt='postgresql' width={22} height={22} />
     ),
     material: 'plastic',
     position: [-0.04, 0.7, 0.05],
@@ -877,15 +703,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#bd34fe',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={vitejsLogo}
-        alt='vitejs'
-        width={21}
-        height={21}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={vitejsLogo} alt='vitejs' width={21} height={21} />,
     material: 'plastic',
     position: [-0.07, 0.7, 0.04],
     name: 'Vite',
@@ -895,15 +713,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#FF6C37',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={redisLogo}
-        alt='redis'
-        width={24}
-        height={24}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={redisLogo} alt='redis' width={24} height={24} />,
     material: 'plastic',
     position: [-0.1, 0.7, 0.03],
     name: 'Redis',
@@ -915,15 +725,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#f2f7fd',
     textColor: '#fff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={reactLogo}
-        alt='react'
-        width={23}
-        height={23}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={reactLogo} alt='react' width={23} height={23} />,
     material: 'plastic',
     position: [0.02, 0.7, 0],
     name: 'React',
@@ -933,15 +735,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#5fa04e',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={nodeJSLogo}
-        alt='node'
-        width={27}
-        height={27}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={nodeJSLogo} alt='node' width={27} height={27} />,
     material: 'plastic',
     position: [0.02, 0.7, 0],
     name: 'Node.js',
@@ -951,15 +745,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#007acc',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='rounded-1 pointer-events-none'
-        src={typescriptLogo}
-        alt='ts'
-        width={24}
-        height={24}
-      />
-    ),
+    text: <Image className='rounded-1 pointer-events-none' src={typescriptLogo} alt='ts' width={24} height={24} />,
     material: 'plastic',
     position: [-0.02, 0.7, 0],
     name: 'TypeScript',
@@ -969,15 +755,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#E434AA',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={grahqlLogo}
-        alt='graphql'
-        width={24}
-        height={24}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={grahqlLogo} alt='graphql' width={24} height={24} />,
     material: 'plastic',
     position: [-0.03, 0.7, 0.01],
     name: 'GraphQL',
@@ -988,13 +766,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
     bodyColor: '#d0d0d0',
     textColor: '#fff',
     text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={expressJSLogo}
-        alt='express'
-        width={22}
-        height={22}
-      />
+      <Image className='pointer-events-none select-none' src={expressJSLogo} alt='express' width={22} height={22} />
     ),
     material: 'plastic',
     position: [-0.05, 0.7, 0.02],
@@ -1005,15 +777,7 @@ export const KEYBOARD_THEMES: TKeycapTheme[] = [
   {
     bodyColor: '#000000',
     textColor: '#ffffff',
-    text: (
-      <Image
-        className='pointer-events-none select-none'
-        src={nextJSLogo}
-        alt='nextjs'
-        width={25}
-        height={25}
-      />
-    ),
+    text: <Image className='pointer-events-none select-none' src={nextJSLogo} alt='nextjs' width={25} height={25} />,
     material: 'plastic',
     position: [-0.08, 0.7, 0],
     name: 'Next.js',

@@ -59,15 +59,10 @@ const ProjectCard: FC<TProjectCardProps> = ({
             transition={{ duration: 0.8 }}
             className='text-16 text-white'
           >
-            {showMore
-              ? detailDescription || description
-              : `${String(description).slice(0, 120)}...`}
+            {showMore ? detailDescription || description : `${String(description).slice(0, 120)}...`}
           </motion.span>
 
-          <span
-            onClick={() => setShowMore(!showMore)}
-            className='font-small-caps cursor-pointer underline'
-          >
+          <span onClick={() => setShowMore(!showMore)} className='font-small-caps cursor-pointer underline'>
             {showMore ? 'Less' : 'More'}
           </span>
 

@@ -20,9 +20,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const activeIndexRef = useRef<number>(0)
   const [targetIndex, setTargetIndex] = useState<number | null>(null)
-  const [itemPositions, setItemPositions] = useState<
-    { left: number; width: number }[]
-  >([])
+  const [itemPositions, setItemPositions] = useState<{ left: number; width: number }[]>([])
 
   const navRefs = useRef<(HTMLAnchorElement | null)[]>([])
   const navWrapperRef = useRef<HTMLDivElement | null>(null)
@@ -170,11 +168,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
         const top = Math.max(0, el.offsetTop - headerOffset)
         const nextTop =
           i + 1 < HEADER_NAVIGATION.length
-            ? Math.max(
-                0,
-                (document.getElementById(HEADER_NAVIGATION[i + 1].id)
-                  ?.offsetTop || Infinity) - headerOffset,
-              )
+            ? Math.max(0, (document.getElementById(HEADER_NAVIGATION[i + 1].id)?.offsetTop || Infinity) - headerOffset)
             : Infinity
         if (scrollY >= top && scrollY < nextTop) {
           found = i
@@ -207,8 +201,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
     } else {
       document.body.classList.remove('overflow-hidden!', 'lg:overflow-auto!')
     }
-    return () =>
-      document.body.classList.remove('overflow-hidden!', 'lg:overflow-auto!')
+    return () => document.body.classList.remove('overflow-hidden!', 'lg:overflow-auto!')
   }, [openMobile])
 
   return (
@@ -270,12 +263,7 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
             <div className='hidden gap-4 lg:flex lg:gap-6'>
               {SOCIAL_NAVIGATION.map((social) => (
                 <Link key={social.name} href={social.href}>
-                  <Image
-                    src={social.image || ''}
-                    alt={social.name}
-                    width={28}
-                    height={28}
-                  />
+                  <Image src={social.image || ''} alt={social.name} width={28} height={28} />
                 </Link>
               ))}
             </div>
@@ -286,18 +274,10 @@ const Header: FC<THeaderProps> = ({ isInitVideoEnded }) => {
                 openMobile ? 'text-primary-500' : 'text-secondary-500',
               )}
             >
-              {openMobile ? (
-                <XIcon size={24} weight='bold' />
-              ) : (
-                <ListIcon size={24} weight='bold' />
-              )}
+              {openMobile ? <XIcon size={24} weight='bold' /> : <ListIcon size={24} weight='bold' />}
             </button>
           </div>
-          <MobileHeader
-            onClose={() => setOpenMobile(false)}
-            isOpen={openMobile}
-            activeIndex={activeIndex}
-          />
+          <MobileHeader onClose={() => setOpenMobile(false)} isOpen={openMobile} activeIndex={activeIndex} />
         </motion.div>
       )}
     </header>

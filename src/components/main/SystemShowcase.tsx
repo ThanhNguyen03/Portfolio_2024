@@ -8,9 +8,7 @@ import Link from 'next/link'
 
 const ArchitectureFlow = () => (
   <div className='rounded-4 border border-violet-700/40 bg-violet-950/20 p-6 backdrop-blur-sm'>
-    <p className='text-13 mb-5 font-medium tracking-widest text-violet-400 uppercase'>
-      System Architecture
-    </p>
+    <p className='text-13 mb-5 font-medium tracking-widest text-violet-400 uppercase'>System Architecture</p>
     <div className='flex flex-col gap-3'>
       {/* Layer rows */}
       {[
@@ -31,12 +29,7 @@ const ArchitectureFlow = () => (
         },
         {
           label: 'Blockchain',
-          items: [
-            'Solidity 0.8.24',
-            'Hardhat',
-            'OpenZeppelin',
-            'Ethereum Sepolia',
-          ],
+          items: ['Solidity 0.8.24', 'Hardhat', 'OpenZeppelin', 'Ethereum Sepolia'],
           color: 'border-pink-500/50 bg-pink-950/30 text-pink-300',
         },
       ].map((layer, i, arr) => (
@@ -46,10 +39,7 @@ const ArchitectureFlow = () => (
               {layer.label}
             </span>
             {layer.items.map((item) => (
-              <span
-                key={item}
-                className={`rounded-2 border px-2.5 py-1 text-[11px] font-medium ${layer.color}`}
-              >
+              <span key={item} className={`rounded-2 border px-2.5 py-1 text-[11px] font-medium ${layer.color}`}>
                 {item}
               </span>
             ))}
@@ -68,10 +58,7 @@ const ArchitectureFlow = () => (
 
 const SystemShowcase = () => {
   return (
-    <section
-      id='system-showcase'
-      className='relative px-2 py-16 md:px-6 md:py-24 lg:px-10'
-    >
+    <section id='system-showcase' className='relative px-2 py-16 md:px-6 md:py-24 lg:px-10'>
       <div className='mx-auto w-full max-w-[1200px]'>
         {/* Section header */}
         <ScrollReveal direction='up' delay={0}>
@@ -82,20 +69,15 @@ const SystemShowcase = () => {
             <div className='h-px flex-1 bg-linear-to-r from-pink-500/50 to-transparent' />
           </div>
           <p className='text-16 mb-12 max-w-[700px] text-white/60'>
-            A full-stack food ordering platform built from scratch — frontend,
-            GraphQL API, real-time layer, and a Solidity smart contract on
-            Ethereum Sepolia.
+            A full-stack food ordering platform built from scratch — frontend, GraphQL API, real-time layer, and a
+            Solidity smart contract on Ethereum Sepolia.
           </p>
         </ScrollReveal>
 
         {/* Architecture + Feature grid */}
         <div className='flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10'>
           {/* Left — Architecture diagram */}
-          <ScrollReveal
-            direction='left'
-            delay={0.1}
-            className='lg:w-[380px] lg:shrink-0'
-          >
+          <ScrollReveal direction='left' delay={0.1} className='lg:w-[380px] lg:shrink-0'>
             <ArchitectureFlow />
           </ScrollReveal>
 
@@ -103,11 +85,7 @@ const SystemShowcase = () => {
           <div className='flex-1'>
             <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
               {NGOO_SYSTEM_FEATURES.map((feature, i) => (
-                <ScrollReveal
-                  key={feature.title}
-                  direction='up'
-                  delay={0.1 + i * 0.05}
-                >
+                <ScrollReveal key={feature.title} direction='up' delay={0.1 + i * 0.05}>
                   <FeatureHighlight {...feature} />
                 </ScrollReveal>
               ))}
