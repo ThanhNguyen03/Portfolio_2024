@@ -33,10 +33,8 @@ type TKeycapProps = {
   size?: [number, number, number]
   /** Border radius */
   radius?: number
-  /** Callback when key is pressed */
+  /** Callback when key is clicked */
   onPress?: (theme: TKeycapTheme) => void
-  /** Callback when key is released */
-  onRelease?: () => void
   /** Custom renderOrther for keycap */
   renderOrder?: number
 }
@@ -47,12 +45,12 @@ export const Keycap: FC<TKeycapProps> = ({
   size = [1, 0.45, 1],
   radius = 0.05,
   onPress,
-  onRelease,
   renderOrder,
 }) => {
   const [isPressed, setIsPressed] = useState<boolean>(false)
   const groupRef = useRef<THREE.Group>(null)
   const velocityY = useRef<number>(0)
+  const pressTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
   // Spring physics animation
   useFrame((_, delta) => {
@@ -81,34 +79,31 @@ export const Keycap: FC<TKeycapProps> = ({
     }
   })
 
-  const handlePointerOver = (theme: TKeycapTheme) => {
-    setIsPressed(true)
-    onPress?.(theme)
-  }
-
-  const handlePointerOut = () => {
-    setIsPressed(false)
-    onRelease?.()
-  }
-
+  // NOTE: Cursor change on hover (KeycapBody handles this internally).
+  // Press animation + info panel are now driven by click, not hover.
   const handleClick = () => {
+    setIsPressed(true)
+    if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
+    pressTimerRef.current = setTimeout(() => setIsPressed(false), 150)
+
+    onPress?.(theme)
+
     if (theme.url) {
       window.open(theme.url, '_blank')
     }
   }
 
+  useLayoutEffect(() => {
+    return () => {
+      if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
+    }
+  }, [])
+
   return (
     <group position={position} renderOrder={renderOrder}>
       {/* Moving keycap */}
       <group ref={groupRef}>
-        <KeycapBody
-          theme={theme}
-          size={size}
-          radius={radius}
-          onPointerOver={() => handlePointerOver(theme)}
-          onPointerOut={handlePointerOut}
-          onClick={handleClick}
-        />
+        <KeycapBody theme={theme} size={size} radius={radius} onClick={handleClick} />
         <KeycapLegend theme={theme} size={size} />
       </group>
 
@@ -131,19 +126,10 @@ type TKeycapBodyProps = {
   theme: TKeycapTheme
   size: [number, number, number]
   radius: number
-  onPointerOver: () => void
-  onPointerOut: () => void
   onClick: () => void
 }
 
-const KeycapBody: FC<TKeycapBodyProps> = ({
-  theme,
-  size,
-  radius,
-  onPointerOver: onHoverEnter,
-  onPointerOut: onHoverLeave,
-  onClick,
-}) => {
+const KeycapBody: FC<TKeycapBodyProps> = ({ theme, size, radius, onClick }) => {
   const meshRef = useRef<THREE.Mesh>(null)
   const [width, height, depth] = size
 
@@ -190,12 +176,10 @@ const KeycapBody: FC<TKeycapBodyProps> = ({
 
   const handlePointerOver = () => {
     document.body.style.cursor = 'pointer'
-    onHoverEnter()
   }
 
   const handlePointerOut = () => {
     document.body.style.cursor = 'auto'
-    onHoverLeave()
   }
 
   useLayoutEffect(() => {
@@ -251,11 +235,11 @@ const KeycapLegend: FC<TKeycapLegendProps> = ({ theme, size }) => {
   // that occurs when icon Y differs from mesh face Y under angled camera).
   // Center icon on keycap face. X/Z are zeroed so the icon sits exactly at
   // the keycap center regardless of the legacy calibration offsets in theme.
-  const iconPos: [number, number, number] = [0, size[1] + 0.01, 0]
+  const iconPos: [number, number, number] = [-0.33, size[1] + 0.01, -0.2]
 
   if (typeof theme.text !== 'string') {
     return (
-      <Html position={iconPos} center transform rotation={[-Math.PI / 2, 0, 0]} pointerEvents='none'>
+      <Html position={iconPos} transform rotation={[-Math.PI / 2, 0, 0]} pointerEvents='none'>
         {theme.text}
       </Html>
     )

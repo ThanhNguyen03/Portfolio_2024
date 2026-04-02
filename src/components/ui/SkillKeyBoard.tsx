@@ -5,7 +5,7 @@ import { useTypingAnimation } from '@/hook/typing-animate'
 import { cn } from '@/utils/cn'
 import { Environment } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { useRef, useState, type FC } from 'react'
+import { useState, type FC } from 'react'
 import { Keycap, type TKeycapTheme } from './KeyCap'
 
 type TKeyboardProps = {
@@ -15,8 +15,7 @@ type TKeyboardProps = {
   keySize?: [number, number, number]
   keyRadius?: number
   position?: [number, number, number]
-  onKeyHover?: (theme: TKeycapTheme) => void
-  onKeyLeave?: () => void
+  onKeyClick?: (theme: TKeycapTheme) => void
 }
 
 const KeyboardModel: FC<TKeyboardProps> = ({
@@ -26,8 +25,7 @@ const KeyboardModel: FC<TKeyboardProps> = ({
   keySize = [1.2, 0.5, 1.2],
   keyRadius = 0.08,
   position = [0, 0, 0],
-  onKeyHover,
-  onKeyLeave,
+  onKeyClick,
 }) => {
   const rows = Math.ceil(KEYBOARD_THEMES.length / columns)
   const lastRowCols = KEYBOARD_THEMES.length % columns || columns
@@ -75,8 +73,7 @@ const KeyboardModel: FC<TKeyboardProps> = ({
             position={[x, 0, y]}
             size={keySize}
             radius={keyRadius}
-            onPress={onKeyHover}
-            onRelease={onKeyLeave}
+            onPress={onKeyClick}
             renderOrder={renderOrder}
           />
         )
@@ -90,45 +87,35 @@ type TSkillKeyboardProps = {
   className?: string
 }
 export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
-  const [hoveredKey, setHoveredKey] = useState<TKeycapTheme>()
-  const leaveTimerRef = useRef<NodeJS.Timeout>()
+  const [selectedKey, setSelectedKey] = useState<TKeycapTheme>()
 
-  const { displayText, isTyping } = useTypingAnimation(hoveredKey?.description || '', !!hoveredKey, 3)
+  const { displayText, isTyping } = useTypingAnimation(selectedKey?.description || '', !!selectedKey, 3)
 
   const LIST_WHITE_TEXT = ['#d0d0d0', '#fff', '#f2f7fd']
 
-  // NOTE: Debounce the leave event to prevent flickering when moving between
-  // adjacent keycaps — the brief gap between pointerOut and the next pointerOver
-  // would flash "Hover a keycap for details" without this delay.
-  const handleKeyHover = (theme: TKeycapTheme) => {
-    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current)
-    setHoveredKey(theme)
-  }
-
-  const handleKeyLeave = () => {
-    leaveTimerRef.current = setTimeout(() => {
-      setHoveredKey(undefined)
-    }, 50)
+  // NOTE: Toggle selection — clicking the same key deselects it.
+  const handleKeyClick = (theme: TKeycapTheme) => {
+    setSelectedKey((prev) => (prev?.name === theme.name ? undefined : theme))
   }
 
   return (
     <div className={cn('center relative z-50 h-[560px] w-full max-w-[800px]', className)}>
       <div className='absolute top-0 mr-15 flex size-full max-w-[500px] -rotate-26 skew-[2.5deg] flex-col text-white'>
         <div className='flex flex-col items-start gap-2'>
-          {hoveredKey ? (
+          {selectedKey ? (
             <h3
               className={cn(
                 'text-23 size-full font-bold',
-                LIST_WHITE_TEXT.includes(hoveredKey.bodyColor)
+                LIST_WHITE_TEXT.includes(selectedKey.bodyColor)
                   ? 'text-shadow-stroke-gray-2'
                   : 'text-shadow-stroke-white-2',
               )}
-              style={{ color: `${hoveredKey.bodyColor}` }}
+              style={{ color: `${selectedKey.bodyColor}` }}
             >
-              {hoveredKey.name}
+              {selectedKey.name}
             </h3>
           ) : (
-            <p className='text-23 size-full font-semibold'>Hover a keycap for details</p>
+            <p className='text-23 size-full font-semibold'>Click a keycap for details</p>
           )}
           <p className='text-14 min-h-30 leading-[160%]'>
             <span>{displayText}</span>
@@ -155,8 +142,7 @@ export const SkillKeyboard: FC<TSkillKeyboardProps> = ({ className }) => {
           keySize={[1, 0.6, 1]}
           keyRadius={0.1}
           position={[0, 0.8, 0]}
-          onKeyHover={handleKeyHover}
-          onKeyLeave={handleKeyLeave}
+          onKeyClick={handleKeyClick}
         />
       </Canvas>
     </div>
